@@ -46,6 +46,8 @@
 
   --color-quote-border: var(--color-text-quote);
   --color-quote-bg: var(--color-codeblock-bg);
+
+  --transition-hover: all 0.2s ease;
 }
 
 * {
@@ -97,6 +99,10 @@ code {
 pre code {
   display: block;
   height: 100%;
+}
+code:hover {
+  background-color: var(--color-highlight-bg) !important;
+  transition: var(--transition-hover);
 }
 
 /* ========================== Code pair ========================== */
@@ -236,7 +242,7 @@ tbody tr:nth-child(even) td:not([rowspan]) {
 }
 tbody tr:hover td {
   background-color: var(--color-table-hover-bg) !important;
-  transition: all 0.2s ease;
+  transition: var(--transition-hover);
 }
 table caption {
   font-size: 1.1rem;
