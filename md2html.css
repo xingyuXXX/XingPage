@@ -27,6 +27,14 @@
   --color-admonition-bg-important: rgba(152, 0, 227, 0.1);
   --color-admonition-bg-caution: rgba(255, 102, 102, 0.1);
 
+  --color-table-header-bg: rgba(255, 218, 185, 0.4);
+  --color-table-border: var(--color-text-quote);
+  --color-table-even-row-bg: var(--color-codeblock-bg);
+  --color-table-hover-bg: var(--color-highlight-bg);
+
+  --color-quote-border: var(--color-text-quote);
+  --color-quote-bg: var(--color-codeblock-bg);
+
   --padding-xy-box: 0.5rem;
   --margin-y-box: 1rem;
 
@@ -36,16 +44,9 @@
   --shadow-box: 0 2px 4px var(--color-shadow);
 
   --font-size-root: 18px;
+  --font-size-caption: 1.1rem;
 
   --gap-code-pair-item: 0.8rem;
-
-  --color-table-header-bg: rgba(255, 218, 185, 0.4);
-  --color-table-border: var(--color-text-quote);
-  --color-table-even-row-bg: var(--color-codeblock-bg);
-  --color-table-hover-bg: var(--color-highlight-bg);
-
-  --color-quote-border: var(--color-text-quote);
-  --color-quote-bg: var(--color-codeblock-bg);
 
   --transition-hover: all 0.2s ease;
 }
@@ -53,16 +54,30 @@
 * {
   scrollbar-width: thin;
   scrollbar-color: rgba(0, 0, 0, 0.1) transparent;
+  box-sizing: border-box;
 }
 
 html {
-  font-size: var(--font-size-root) !important;
+  font-size: var(--font-size-root);
   background-color: var(--color-page-bg);
+  margin: 0;
+  padding: 0;
 }
 
 body {
-  max-width: 100%;
   color: var(--color-text-normal);
+  padding: var(--padding-xy-box);
+  margin: 0;
+  /* 如果注释掉就会导致很多 overflow don't know why */
+  height: 100%;
+  width: 100%;
+}
+
+body * {
+  max-width: 100%;
+  /* max-height: 100%; */
+  overflow-wrap: break-word;
+  word-break: normal;
 }
 
 em {
@@ -90,36 +105,53 @@ pre {
   background-color: var(--color-codeblock-bg);
   border-radius: var(--border-radius-box);
   box-shadow: var(--shadow-box);
-  box-sizing: border-box;
+  overflow-x: auto;
 }
 code {
   font-family: "Anonymous Pro", monospace !important;
   font-size: 0.9rem !important;
-}
-pre code {
-  display: block;
-  height: 100%;
+  white-space: pre;
 }
 code:hover {
   background-color: var(--color-highlight-bg) !important;
   transition: var(--transition-hover);
 }
+/* TODO: code will exceed the right-padding of pre  */
+pre code {
+  display: block;
+}
 
-/* ========================== Code pair ========================== */
-.code-pair {
-  /* align-items: center; */
+/* ========================== Block pair ========================== */
+.block-pair {
+  position: relative;
+  align-items: center;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: center;
   gap: var(--gap-code-pair-item);
   margin: var(--margin-y-box) 0;
-  width: 100%;
 }
-.code-pair-item {
-  /* width: calc((100% - (var(--num-cols) - 1) * var(--gap-code-pair-item)) / var(--num-cols)); */
+.block-pair[alt]::before {
+  content: attr(alt);
   display: block;
-  overflow-x: auto;
+  position: absolute;
+  top: calc(var(--margin-y-box) * -1);
+  width: 100%;
+  font-size: var(--font-size-caption);
+  font-weight: 700;
+  text-align: center;
+}
+.block-pair[alt] {
+  margin-top: calc(var(--margin-y-box) + var(--font-size-caption));
+}
+.block-pair-item {
+  flex: 0 1 auto;
+  min-width: 0;
+  display: block;
+}
+.block-pair-item.block-pair-item-static {
+  flex: 0 0 auto;
 }
 
 /* ========================== Blockquotes ========================== */
@@ -132,9 +164,13 @@ blockquote {
   box-shadow: var(--shadow-box);
   color: var(--color-text-quote);
 }
-blockquote p {
+blockquote > p {
   margin: 0;
   padding: 0;
+}
+blockquote > ul,
+blockquote > ol {
+  margin: 0;
 }
 
 /* ========================== Admonitions ========================== */
@@ -147,7 +183,7 @@ blockquote p {
   box-shadow: var(--shadow-box);
   color: var(--color-text-quote);
 }
-.admonition p {
+.admonition > p {
   margin: 0;
   padding: 0;
 }
@@ -212,11 +248,15 @@ blockquote p {
 }
 
 /* ========================== Table =========================== */
+.table-wrapper {
+  overflow-x: auto;
+  margin: var(--margin-y-box) auto;
+}
 table {
+  display: table;
   border-collapse: collapse;
   width: auto;
-  max-width: 100%;
-  margin: var(--margin-y-box) auto;
+  margin: 0 auto;
   border-radius: var(--border-radius-box);
   box-shadow: var(--shadow-box);
 }
@@ -230,6 +270,10 @@ th {
 td {
   padding: 12px;
   border: none;
+}
+td > p {
+  margin: 0;
+  padding: 0;
 }
 tbody tr:first-child td {
   border-top: var(--border-table);
@@ -245,7 +289,7 @@ tbody tr:hover td {
   transition: var(--transition-hover);
 }
 table caption {
-  font-size: 1.1rem;
+  font-size: var(--font-size-caption);
   margin-bottom: 0.5rem;
   font-weight: 700;
   text-align: center;
@@ -261,7 +305,6 @@ figcaption {
   font-style: italic;
 }
 img {
-  max-width: 100%;
   border-radius: var(--border-radius-box);
   box-shadow: var(--shadow-box);
 }
@@ -274,7 +317,7 @@ img.note-inline-img {
 /* ========================== Lists ========================== */
 ul,
 ol {
-  margin: 0.5rem 0;
+  margin: calc(var(--margin-y-box) / 2) 0;
   padding-left: 2rem;
 }
 
@@ -329,15 +372,16 @@ h6 {
   justify-content: center;
   margin: 0 0 var(--margin-y-box) 0;
 }
-.signature p {
+.signature > p {
   margin: 0;
+  padding: 0;
 }
 .signature::before,
 .signature::after {
   content: "";
   display: inline-block;
-  width: 1lh;
-  height: 1lh;
+  width: 1.4lh;
+  height: 1.4lh;
   background-repeat: no-repeat;
   background-size: contain;
 }
