@@ -123,36 +123,41 @@ pre code {
 
 /* ========================== Block pair ========================== */
 .block-pair {
-  position: relative;
-  align-items: center;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
+  align-items: center;
   justify-content: center;
+  position: relative;
   gap: var(--gap-code-pair-item);
   margin: var(--margin-y-box) 0;
 }
-.block-pair[alt]::before {
-  content: attr(alt);
+/* TODO: make block-pair-item also a flex container (column) */
+.block-pair-item {
   display: block;
+  flex: 0 1 auto;
+  min-width: 0;
+}
+.block-pair-item.block-pair-item-static {
+  flex: 0 0 auto;
+}
+.block-pair[alt] {
+  margin-top: calc(var(--margin-y-box) + var(--font-size-caption) + 0.5rem);
+}
+.block-pair[alt]::before {
+  display: block;
+  content: attr(alt);
   position: absolute;
-  top: calc(var(--margin-y-box) * -1);
+  top: calc(var(--margin-y-box) * -1 - 0.5rem);
   width: 100%;
   font-size: var(--font-size-caption);
   font-weight: 700;
   text-align: center;
 }
-.block-pair[alt] {
-  margin-top: calc(var(--margin-y-box) + var(--font-size-caption));
-}
-/* TODO: make block-pair-item also a flex container (column) */
-.block-pair-item {
-  flex: 0 1 auto;
-  min-width: 0;
-  display: block;
-}
-.block-pair-item.block-pair-item-static {
-  flex: 0 0 auto;
+.block-pair pre,
+.block-pair p,
+.block-pair figure {
+  margin: 0 !important;
 }
 
 /* ========================== Blockquotes ========================== */
