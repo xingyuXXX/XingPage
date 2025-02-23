@@ -145,6 +145,7 @@ pre code {
 .block-pair[alt] {
   margin-top: calc(var(--margin-y-box) + var(--font-size-caption));
 }
+/* TODO: make block-pair-item also a flex container (column) */
 .block-pair-item {
   flex: 0 1 auto;
   min-width: 0;
@@ -167,10 +168,6 @@ blockquote {
 blockquote > p {
   margin: 0;
   padding: 0;
-}
-blockquote > ul,
-blockquote > ol {
-  margin: 0;
 }
 
 /* ========================== Admonitions ========================== */
