@@ -273,10 +273,6 @@ td {
   padding: 12px;
   border: none;
 }
-td > p {
-  margin: 0;
-  padding: 0;
-}
 tbody tr:first-child td {
   border-top: var(--border-table);
 }
@@ -295,6 +291,14 @@ table caption {
   margin-bottom: 0.5rem;
   font-weight: 700;
   text-align: center;
+}
+td > p {
+  margin: 0;
+  padding: 0;
+}
+td ul,
+td ol {
+  margin: 0;
 }
 
 /* ========================== Images and Figures ========================== */
