@@ -300,6 +300,11 @@ td ul,
 td ol {
   margin: 0;
 }
+th img,
+td img {
+  display: block;
+  margin: 0 auto;
+}
 
 /* ========================== Images and Figures ========================== */
 figure {
