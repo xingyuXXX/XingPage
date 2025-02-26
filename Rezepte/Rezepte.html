@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Rezepte</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="https://xingyuxxx.github.io/XingPage/md2html.css" />
+  <!-- ======================= prism.js ======================== -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/highlight-keywords/prism-highlight-keywords.min.js"></script>
+  <!-- <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/normalize-whitespace/prism-normalize-whitespace.min.js"></script> -->
+
+  <!-- ======================== sidebar ======================== -->
+  <link rel="stylesheet" href="https://xingyuxxx.github.io/MarkdownSidebarTOC/sidebar.css" />
+  <script src="https://xingyuxxx.github.io/MarkdownSidebarTOC/sidebar.js"></script>
+
+  <!-- ======================== highlight.js ======================== -->
+  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/styles/default.min.css" /> -->
+  <!-- <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/highlight.min.js"></script> -->
+  <!-- <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/languages/go.min.js"></script> -->
+  <!-- <script> -->
+  <!--   hljs.highlightAll(); -->
+  <!-- </script> -->
+
+  <!-- ======================== table border for rowspan ======================== -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      document.querySelectorAll("td[rowspan]").forEach((td) => {
+        // 解析 rowspan 的值
+        const rowSpan = parseInt(td.getAttribute("rowspan"), 10);
+        if (isNaN(rowSpan) || rowSpan < 1) return;
+
+        // 找到包含该 td 的 tr（第一行）
+        const firstRow = td.closest("tr");
+        if (!firstRow) return;
+
+        // 2. 同一行中所有 td 添加上边框
+        firstRow.querySelectorAll("td").forEach((cell) => {
+          cell.style.borderTop = "var(--border-table)";
+        });
+
+        // 1. 带有 rowspan 的 td 自身添加上边框和下边框
+        td.style.borderTop = "var(--border-table)";
+        td.style.borderBottom = "var(--border-table)";
+
+        // 获取包含该行的 table 元素
+        const table = firstRow.closest("table");
+        if (!table) return;
+
+        // 获取 table 中所有的 tr 节点
+        const rows = Array.from(table.querySelectorAll("tr"));
+        const firstRowIndex = rows.indexOf(firstRow);
+        const lastRowIndex = firstRowIndex + rowSpan - 1;
+
+        // 3. 在最后一行中所有 td 添加下边框
+        const lastRow = rows[lastRowIndex];
+        if (lastRow) {
+          lastRow.querySelectorAll("td").forEach((cell) => {
+            cell.style.borderBottom = "var(--border-table)";
+          });
+        }
+      });
+    });
+  </script>
+  <script
+  src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.min.js"
+  type="text/javascript"></script>
+</head>
+<body>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#rezepte" id="toc-rezepte">Rezepte
+<img class="note-inline-img" src="./FavIcons/favicon-rezept.ico" /></a>
+<ul>
+<li><a href="#酸辣土豆丝" id="toc-酸辣土豆丝">酸辣土豆丝</a></li>
+<li><a href="#西红柿土豆炖牛肉"
+id="toc-西红柿土豆炖牛肉">西红柿土豆炖牛肉</a></li>
+<li><a href="#黑椒牛柳意面" id="toc-黑椒牛柳意面">黑椒牛柳意面</a></li>
+<li><a href="#鸡腿肉" id="toc-鸡腿肉">鸡腿肉</a></li>
+<li><a href="#香辣鸡丁" id="toc-香辣鸡丁">香辣鸡丁</a></li>
+<li><a href="#西红柿炒鸡蛋" id="toc-西红柿炒鸡蛋">西红柿炒鸡蛋</a></li>
+<li><a href="#小炒牛肉" id="toc-小炒牛肉">小炒牛肉</a></li>
+<li><a href="#干炒平菇" id="toc-干炒平菇">干炒平菇</a></li>
+<li><a href="#香菇鸡肉饭" id="toc-香菇鸡肉饭">香菇鸡肉饭</a></li>
+<li><a href="#煎排骨" id="toc-煎排骨">煎排骨</a></li>
+<li><a href="#煎牛排" id="toc-煎牛排">煎牛排</a></li>
+<li><a href="#牛肉萝卜汤" id="toc-牛肉萝卜汤">牛肉萝卜汤</a></li>
+<li><a href="#蛋炒饭" id="toc-蛋炒饭">蛋炒饭</a></li>
+<li><a href="#空气炸锅烤羊肉"
+id="toc-空气炸锅烤羊肉">空气炸锅烤羊肉</a></li>
+<li><a href="#孜然羊肉" id="toc-孜然羊肉">孜然羊肉</a></li>
+<li><a href="#水煮牛肉" id="toc-水煮牛肉">水煮牛肉</a></li>
+<li><a href="#红烧排骨" id="toc-红烧排骨">红烧排骨</a></li>
+<li><a href="#排骨炖豆角" id="toc-排骨炖豆角">排骨炖豆角</a></li>
+<li><a href="#红烧鸡翅" id="toc-红烧鸡翅">红烧鸡翅</a></li>
+</ul></li>
+</ul>
+</nav>
+<h1 id="rezepte">Rezepte
+<img class="note-inline-img" src="./FavIcons/favicon-rezept.ico" /></h1>
+<div class="signature">
+<p><span>by <strong>XingyuZhou</strong> @ <em>Frankfurt am
+Main</em></span></p>
+</div>
+<p><link rel="icon" href="./FavIcons/favicon-rezept.ico" type="image/x-icon"></p>
+<p>🥄 “一勺”：</p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr>
+<th>对象</th>
+<th>实际量</th>
+<th>对象</th>
+<th>实际量</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>液体调料</td>
+<td>15ml 量勺</td>
+<td>粉粒类调料</td>
+<td>比拇指大一圈的小铁勺</td>
+</tr>
+<tr>
+<td>盐</td>
+<td>1g 小木勺</td>
+<td>大米</td>
+<td>100ml 量勺</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><span id="rouchaoshui"><strong>肉类焯水</strong></span>：</p>
+<ol type="1">
+<li><p>冷水下锅，加入料酒，快速升温到 60 度左右。</p>
+<blockquote>
+<p>水越多，水温上升越慢，更多时间出血水。如果水很快就烧开了，就会导致肉闭合，异味来不及散出
+除了料酒（需要是黄酒），葱姜蒜的作用不大（时间太短）。强力去腥就放白酒。酒精渗透快，会混合异味（也包括香味），然后随着温度到
+70 度左右就一起挥发掉</p>
+</blockquote></li>
+<li><p>转最小火，保持 60-70 度之间泡个 10
+分钟，并拨弄几下，利于出血水。</p>
+<blockquote>
+<p>泡多久取决于肉的脂肪含量（脂肪溶于热水）。如果想保留肉类的脂肪（保留肉香），就少泡一会，如果肉非常肥，就多泡一会。
+生肉变白就可以。</p>
+</blockquote></li>
+<li><p>焯水后捞出用<strong>热水</strong>清洗。</p>
+<blockquote>
+<p>如果用冷水，一热一冷会让肉质收缩，口感发柴</p>
+</blockquote></li>
+</ol>
+<div class="block-pair">
+<div class="block-pair-item">
+<figure>
+<img src="./assets/rez_60.png" style="height: 400px" />
+<figcaption>
+肉眼可见血水往外流，此时水温大概 60 度左右
+</figcaption>
+</figure>
+</div>
+<div class="block-pair-item">
+<figure>
+<img src="./assets/rez_70.png" style="height: 400px" />
+<figcaption>
+锅中水滋啦响边时，此时水温大概 70 度左右
+</figcaption>
+</figure>
+</div>
+</div>
+<p><strong>蔬菜类焯水</strong>：</p>
+<ol type="1">
+<li><p>热水下锅，水也要尽量多，保持 90 度以上水温。</p>
+<blockquote>
+<p>热水会破坏青菜中的叶绿素并流出来（游离叶绿素），导致青菜焯水后后更青翠。
+放盐可以保护游离叶绿素，因此不会发黄。</p>
+</blockquote></li>
+<li><p>焯水完后，立刻捞出放入凉水水中。</p>
+<blockquote>
+<p>同时炒菜时，也需要温度足够高才下青菜，否则也容易变黄。</p>
+</blockquote></li>
+</ol>
+<p><strong>切肉</strong>：顺纹分块，逆纹切片</p>
+<p><span id="chaotangse"><strong>炒糖色</strong></span>：</p>
+<ol type="1">
+<li><p>锅烧热后加少许油润锅</p></li>
+<li><p>留一点油，加冰糖，中小火炒至融化</p>
+<blockquote>
+<p>尽量让糖集中，不要平摊开，否则容易烧焦；勺子也要不停搅动；可以边炒边敲冰糖帮助融化</p>
+</blockquote></li>
+<li><p>融化后转最小火，继续搅拌，知道糖液变成枣红色即可，切不可炒多了</p></li>
+</ol>
+<p>备忘：</p>
+<ul>
+<li>焯水后的原汤对炖肉很重要，可以焯水两次，第一次烧到 60
+度左右停火倒掉，第二次煮开捞去浮沫保留原汤。</li>
+<li>炖肉先加盐炖不烂的说法没有依据，相反先放盐更入味。</li>
+</ul>
+<h2 id="酸辣土豆丝">酸辣土豆丝</h2>
+<p>主料：4 个中等大小土豆 🥔，1 个青椒 🌶️</p>
+<ol type="1">
+<li><p>土豆丝焯水三遍去除淀粉，最后沥干</p></li>
+<li><p>热油放葱姜蒜爆香，放入青椒翻炒</p>
+<blockquote>
+<p>青椒炒一小会就要放土豆，否则容易老</p>
+</blockquote></li>
+<li><p>放入土豆丝翻炒至变色</p></li>
+<li><p>加入 2 勺醋，1 勺生抽，5 勺盐翻炒均匀即可出锅</p></li>
+</ol>
+<h2 id="西红柿土豆炖牛肉">西红柿土豆炖牛肉</h2>
+<p>食材： Beinscheibe <span class="math inline">\(\times
+1000g\)</span>，西红柿 <span class="math inline">\(\times
+2\)</span>，罐头番茄 <span class="math inline">\(\times
+400g\)</span>，中等大小土豆 <span class="math inline">\(\times
+3\)</span>，洋葱 <span class="math inline">\(\times 1\)</span></p>
+<ol type="1">
+<li><p>焯水后沥干</p></li>
+<li><p>葱姜蒜爆香，放牛肉，炒至上色，加入洋葱、6 勺盐、1
+勺生抽，炒出香味</p>
+<blockquote>
+<p><a href="#chaotangse">炒糖色</a>也可以 <br />
+这一步的目的是进一步蒸发血水，因此中途如果出水过多可以倒掉，再补点油，最终目的是将肉煎糊一点以出香味</p>
+</blockquote></li>
+<li><p>加没过肉的开水，加入 2 勺料酒、3 勺生抽、1 勺老抽、 2 片香叶、 1
+个八角，炖 30 分钟</p>
+<blockquote>
+<p>最好是原汤</p>
+</blockquote></li>
+<li><p>加入土豆、罐头番茄，加 6 勺盐，再炖 30 分钟</p></li>
+<li><p>放入西红柿，炖 10 分钟，大火收汁即可出锅</p></li>
+</ol>
+<h2 id="黑椒牛柳意面">黑椒牛柳意面</h2>
+<p>主料（双人份）：1 盒 Minutensteak 牛肉、1 份一欧、 1 份 50
+分硬币粗细的意面</p>
+<ol type="1">
+<li>牛肉逆纹切条，加 2 勺盐、1 勺生抽、1 勺老抽、1 勺食用油、1 勺料酒、1
+勺淀粉腌制</li>
+<li>加 1 勺蚝油、3 勺生抽、0.5 勺老抽、挺多黑胡椒、0.4
+勺淀粉、一点水调制酱汁</li>
+<li>锅烧开水，加入少许油，4 勺盐煮开，放入意面，煮 8
+分钟，捞出过冷水</li>
+<li>热锅凉油，炒熟牛肉，装出</li>
+<li>起锅烧油，炒熟青椒，洋葱丝，再放入牛肉，意面，调好的酱汁一起炒；汁收得差不多就可以出锅</li>
+</ol>
+<h2 id="鸡腿肉">鸡腿肉</h2>
+<p>主料（双人份）：Hähnchen-Oberkeulensteaks <span
+class="math inline">\(\times 400g\)</span></p>
+<ol type="1">
+<li><p>鸡腿肉切拇指大块，加入 1 整颗蒜末、2 根小葱、2 勺料酒、2
+勺生抽、0.8 勺老抽、黑胡椒粉、1 勺蚝油腌制 20 分钟</p>
+<blockquote>
+<p>因为后面要煮一段时间，小了容易老</p>
+</blockquote></li>
+<li><p>锅烧温油放鸡腿肉，中大火煎至两面焦黄</p>
+<blockquote>
+<p>油不用太多，否则最后汁水上油很多 <br> 煎糊一点才香</p>
+</blockquote></li>
+<li><p>倒入剩余料汁，并添水，大火煮开，小火盖盖焖 10 分钟</p>
+<blockquote>
+<p>水不用太多，煮久了肉容易老</p>
+</blockquote></li>
+<li><p>大火收汁即可出锅</p>
+<blockquote>
+<p>可以来点蒸鱼豉油</p>
+</blockquote></li>
+</ol>
+<h2 id="香辣鸡丁">香辣鸡丁</h2>
+<p>主料（双人份）：Mini-Steaks <span class="math inline">\(\times
+400g\)</span></p>
+<ol type="1">
+<li>鸡肉切丁，加入 2 勺料酒、1 勺生抽、0.5 勺老抽、1 份鸡蛋液、3g
+盐、少许淀粉、黑胡椒粉腌制 20 分钟</li>
+<li>准备料汁：4g 盐、1 勺鸡精、适量胡椒粉、少许白糖、1.5 勺生抽、1.5
+勺料酒、少许淀粉，和匀</li>
+<li>起锅至锅底冒烟，加油润锅，放葱姜蒜、干辣椒爆香，炒香后再放入 1
+勺郫县豆瓣酱炒香</li>
+<li>下入腌好的鸡丁（腌料水分过多可以过滤网），炒至五成熟后加入青椒，翻炒
+1 分钟后倒入料汁</li>
+<li>至汁干油亮即可出锅</li>
+</ol>
+<h2 id="西红柿炒鸡蛋">西红柿炒鸡蛋</h2>
+<p>主料：Tomaten <span class="math inline">\(\times 3\)</span>，Eier
+<span class="math inline">\(\times 4\)</span></p>
+<ol type="1">
+<li><p>鸡蛋液中加入 3 勺食盐、白醋去腥，打匀</p></li>
+<li><p>热油放入鸡蛋液，定型后再翻动，全部定型捞出</p></li>
+<li><p>葱姜蒜爆香，倒入西红柿，放 8 勺盐、0.8
+勺白砂糖，将西红柿块炒出汁</p>
+<blockquote>
+<p>西红柿可以多炒会</p>
+</blockquote></li>
+<li><p>倒入鸡蛋，快速翻炒，收汁就差不多了</p></li>
+<li><p>加入香油，葱花出锅</p></li>
+</ol>
+<h2 id="小炒牛肉">小炒牛肉</h2>
+<p>主料：Minutensteak <span class="math inline">\(\times
+320g\)</span></p>
+<ol type="1">
+<li><p>牛肉切好后冷水泡 30 分钟</p></li>
+<li><p>挤干水分，1 勺老抽、1 勺生抽、1 勺料酒、1
+勺油（少了容易粘锅）、一把淀粉、4g 盐腌制 20 分钟</p>
+<blockquote>
+<p>要挤干水分，腌好后没有太多水</p>
+</blockquote></li>
+<li><p>热锅热油，放入牛肉，迅速炒至变色捞出</p>
+<blockquote>
+<p>锅一定要热（到滴水会滚的那种），不要怕放肉崩油 <br>
+下完牛肉不要翻炒，拨弄开不要粘在一起就行。让下面的肉焦糊一点（香），上面的肉有点生（嫩），即可盛出
+<br> 牛肉出的水要倒掉，不要回锅一起炒（腥味来源） <br></p>
+</blockquote></li>
+<li><p>新起锅冷油放入干辣椒，葱姜蒜爆香</p></li>
+<li><p>放入蔬菜，加 4g 盐、一勺生抽，炒至 9 分熟</p></li>
+<li><p>最后放入牛肉、一袋六婆、一点油、一点鸡精、翻炒均匀快速出锅</p></li>
+</ol>
+<h2 id="干炒平菇">干炒平菇</h2>
+<p>主料：Austernpilze <span class="math inline">\(\times 2\)</span></p>
+<ol type="1">
+<li>葱姜蒜爆香，平菇撕条攥干水分，下锅炒</li>
+<li>加入 5 勺盐，0.8 勺孜然粉炒到平菇收缩变小后，加半袋六婆出锅</li>
+</ol>
+<h2 id="香菇鸡肉饭">香菇鸡肉饭</h2>
+<p>主料：1 盒鸡胸肉 🐔，10 个干香菇 🍄；1 根胡萝卜 🥕，2.5 勺大米 🍚</p>
+<ol type="1">
+<li>干香菇提前泡水两三个小时</li>
+<li>鸡胸肉切块，加入 2 勺料酒，5 勺盐，0.8 勺淀粉，黑胡椒粉腌制</li>
+<li>热油下入鸡块炒至变色，盛出</li>
+<li>胡萝卜，香菇切丁，放锅里也炒一下</li>
+<li>和淘好的米一起放入电饭锅，再加 2 勺生抽，5 勺盐，选择 30
+分钟煮饭档</li>
+</ol>
+<h2 id="煎排骨">煎排骨</h2>
+<p>主料：Lidl 冷冻排骨 1 条</p>
+<ol type="1">
+<li>6 档火热锅</li>
+<li>冷油下入排骨，每面煎 4 分钟</li>
+</ol>
+<h2 id="煎牛排">煎牛排</h2>
+<p>原料：牛排 🥩，黑胡椒粉，橄榄油，迷迭香</p>
+<ol type="1">
+<li><p>去除包装袋室温放置一会，厨房纸吸去血水</p>
+<blockquote>
+<p>必须恢复到室温，否则煎的时候容易外熟内生；也只能静置恢复，否则口感不行</p>
+</blockquote></li>
+<li><p>抹橄榄油，黑胡椒粉，盐腌制半小时</p></li>
+<li><p>热锅热油，9 档大火放入牛排，每面煎 40 秒</p></li>
+<li><p>转 5 档中火，放入蒜粒，每面煎 1 分钟</p></li>
+<li><p>放入黄油，根据厚度每面浇油 3~5 分钟</p>
+<blockquote>
+<p>黄油不要放太早，容易焦</p>
+</blockquote></li>
+<li><p>出锅醒肉 4 分钟</p></li>
+</ol>
+<h2 id="牛肉萝卜汤">牛肉萝卜汤</h2>
+<p>主料（双人份）：Beinscheibe <span class="math inline">\(\times
+1\)</span>，白萝卜 <span class="math inline">\(\times 1\)</span></p>
+<ol type="1">
+<li><p>牛肉切块并<a href="#rouchaoshui">焯水</a></p></li>
+<li><p>牛肉加葱姜蒜、2
+勺料酒入锅，添冷水没过牛肉一节手指，中火煮沸，撇去血沫</p>
+<blockquote>
+<p>水不要加得太多，否则后面咸了不好兑水</p>
+</blockquote></li>
+<li><p>加入 3 个八角、5 片香叶、5g 盐，转小火盖盖炖 40 分钟</p></li>
+<li><p>萝卜去皮切块加入，补 4g 盐、2 勺生抽、0.6 勺老抽（1
+勺汤颜色稍微有点深）、适量鸡精，再炖 30 分钟</p>
+<blockquote>
+<p>老抽不要多，否则汤不好看</p>
+</blockquote></li>
+<li><p>尝尝咸淡（以肉的咸淡为准），咸了就加水，再炖 10 分钟即可</p></li>
+</ol>
+<h2 id="蛋炒饭">蛋炒饭</h2>
+<p>主料：隔夜米饭 <span class="math inline">\(\times 250
+ml\)</span>，鸡蛋 <span class="math inline">\(\times 4\)</span></p>
+<ol type="1">
+<li>剩饭加入 1 勺食用油、 1 勺生抽、0.5 勺老抽、0.8
+勺蚝油、少许黑胡椒，拌匀，放置 3 小时</li>
+<li>打入四个鸡蛋，加入 1 勺盐，不用打散，直接热锅热油下，炒散</li>
+<li>加入蔬菜、虾仁、1 勺生抽炒香</li>
+<li>加入米饭，1 勺鸡精翻炒至干巴即可出锅</li>
+</ol>
+<h2 id="空气炸锅烤羊肉">空气炸锅烤羊肉</h2>
+<p>主料：4 个 T 型羊排肉 🐑，1 个洋葱 🧅</p>
+<ol type="1">
+<li>羊肉切块，洋葱切碎</li>
+<li>加入葱，姜，洋葱，50ml 料酒，30ml
+生抽，少许盐，半勺孜然粉，少许黑胡椒粉，抓匀腌制 1h</li>
+<li>空气炸锅底部铺锡纸，戳几个洞便于水流出去</li>
+<li>190 度，20-30 分钟，每隔 10 分钟打开翻面</li>
+<li>出锅撒入六婆</li>
+</ol>
+<h2 id="孜然羊肉">孜然羊肉</h2>
+<p>主料：羊肉</p>
+<ol type="1">
+<li>羊肉切片</li>
+<li>加入 1 勺六婆，1.2 勺孜然粉，0.5 勺花椒粉，挺多黑胡椒，1 个蛋清，30
+ml 生抽，50ml 料酒，一小勺淀粉，抓匀腌制 1h</li>
+<li>葱姜蒜切好备用，放 2 勺孜然粒，1 勺六婆，1 勺白芝麻，0.5
+勺胡椒粉，3g 盐，备用</li>
+<li>锅中放多点油，微微热后加入腌制好的羊肉，大火炒至金黄，炒好盛出备用</li>
+<li>用炒羊肉剩下的油，倒入葱姜蒜爆香，放入粉料，再放入羊肉，大火炒匀出锅</li>
+</ol>
+<h2 id="水煮牛肉">水煮牛肉</h2>
+<p>主料（双人份）：Rinderwade/Beinscheibe <span
+class="math inline">\(\times 500g\)</span>、中等大小土豆 <span
+class="math inline">\(\times 2\)</span>、生菜、豆芽</p>
+<ol type="1">
+<li><p>牛肉切片，去血水后，加入 10g 盐、2 勺料酒、2 勺生抽、3
+勺淀粉、少许油抓匀腌制</p></li>
+<li><p>蒜、青红花椒爆香，放入牛油火锅底料，炒至完全融化后立即加开水</p>
+<blockquote>
+<p>融化后立即加开水，否则底料容易炒糊</p>
+</blockquote></li>
+<li><p>水开放土豆煮 5 分钟，放入牛肉煮 3 分钟，再放蔬菜煮 3
+分钟即可出锅</p></li>
+</ol>
+<h2 id="红烧排骨">红烧排骨</h2>
+<p>主料：Schweine-Schälrippchen <span class="math inline">\(\times
+770g\)</span></p>
+<ol type="1">
+<li><p>排骨切 5cm 左右段，<a
+href="#rouchaoshui">焯水</a>，后温水清洗</p></li>
+<li><p>一手心冰糖<a
+href="#chaotangse">炒糖色</a>后倒入排骨，快速翻炒至上色</p></li>
+<li><p>上色后，加入葱姜、2 颗八角、2 勺料酒、6
+勺盐，继续翻炒至出香味</p></li>
+<li><p>出香味后加入 2 勺生抽继续翻炒一小会</p>
+<blockquote>
+<p>不能放老抽，否则颜色发黑</p>
+</blockquote></li>
+<li><p>加入开水没过排骨，炖 30 分钟</p>
+<blockquote>
+<p>加入开水，如果是凉水，一热一冷会让肉质收缩，口感发柴</p>
+</blockquote></li>
+<li><p>大火收汁出锅</p></li>
+</ol>
+<h2 id="排骨炖豆角">排骨炖豆角</h2>
+<p>主料：Schweine-Schälrippchen <span class="math inline">\(\times
+860g\)</span></p>
+<ol type="1">
+<li><p>排骨切 5cm 左右段，<a
+href="#rouchaoshui">焯水</a>，后温水清洗沥干</p></li>
+<li><p>葱姜炒香，加排骨，加 2 个八角、3 勺生抽、1 勺老抽、8 勺盐、2
+勺料酒炒至酱油基本被吸收</p>
+<blockquote>
+<p>盐要一次性放足，提前放盐可以让肉更耐炖，锁住肉香</p>
+</blockquote></li>
+<li><p>加水没过排骨，补 1 勺生抽、2 片香叶、1 节桂皮，大火炖 10
+分钟后转小火炖 10 分钟</p></li>
+<li><p>豆角切段，热锅热油下入，补 2 勺盐炒至翠绿</p>
+<blockquote>
+<p>豆角外部有层保护膜，如果不通过高位翻炒破坏掉，光靠水煮是不够的，就会导致很久炖不熟。
+<br>
+油需要多一点，因为锅温很高，多一点油可以让豆角和锅之间有个缓冲，而且会让豆角炒出来更绿。</p>
+</blockquote></li>
+<li><p>排骨中加入豆角和土豆，补 1 勺生抽、4 勺盐、1 勺老抽、1
+勺鸡精再小火炖 25 分钟。</p></li>
+<li><p>大火收汁出锅</p></li>
+</ol>
+<h2 id="红烧鸡翅">红烧鸡翅</h2>
+<p>主料：Hähnchen-Flügel <span class="math inline">\(\times
+1100g\)</span></p>
+<ol type="1">
+<li><p>鸡翅正反各划两刀，<a
+href="#rouchaoshui">焯水</a>，后温水清洗</p></li>
+<li><p>锅中油热，葱姜爆香，煎至两面金黄</p>
+<blockquote>
+<p>太多可分两锅煎</p>
+</blockquote></li>
+<li><p>加入 2 勺料酒、3 勺生抽、1 勺老抽、1 勺蚝油炒香</p></li>
+<li><p>加入开水没过鸡翅，加入 6 勺盐、1 勺鸡精、2 颗冰糖、3
+个八角、桂皮、4 片香叶，中火焖 20 分钟</p></li>
+<li><p>大火收汁即可出锅</p></li>
+</ol>
+</body>
+</html>
