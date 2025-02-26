@@ -1,10 +1,8 @@
-# Rezepte <img class="note-inline-img" src="./FavIcons/favicon-rezept.ico" />
+# Rezepte
 
 <div class="signature">
   <span>by <strong>XingyuZhou</strong> @ <em>Frankfurt am Main</em></span>
 </div>
-
-<link rel="icon" href="./FavIcons/favicon-rezept.ico" type="image/x-icon">
 
 🥄 “一勺”：
 
