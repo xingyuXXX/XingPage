@@ -349,7 +349,7 @@ h1 {
   text-align: center;
   text-shadow: var(--shadow-box);
   border-bottom: 4px solid;
-  border-image: linear-gradient(to right, transparent 0%, var(--color-text-head) 50%, transparent 100%) 1;
+  border-image: linear-gradient(to right, transparent 0%, transparent 20%, var(--color-text-head) 50%, transparent 80%, transparent 100%) 1;
 }
 h2 {
   font-size: 1.5rem;
