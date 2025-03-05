@@ -30,7 +30,7 @@
   --color-table-header-bg: rgba(255, 218, 185, 0.4);
   --color-table-border: var(--color-text-quote);
   --color-table-even-row-bg: #eceae4;
-  --color-table-odd-row-bg: #f6f4ee;
+  --color-table-odd-row-bg: #ffffff;
   --color-table-hover-bg: var(--color-highlight-bg);
 
   --color-quote-border: var(--color-text-quote);
