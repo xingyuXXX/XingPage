@@ -29,7 +29,8 @@
 
   --color-table-header-bg: rgba(255, 218, 185, 0.4);
   --color-table-border: var(--color-text-quote);
-  --color-table-even-row-bg: var(--color-codeblock-bg);
+  --color-table-even-row-bg: #eceae4;
+  --color-table-odd-row-bg: #f6f4ee;
   --color-table-hover-bg: var(--color-highlight-bg);
 
   --color-quote-border: var(--color-text-quote);
@@ -281,6 +282,9 @@ tbody tr:last-child td {
 }
 tbody tr:nth-child(even) td:not([rowspan]) {
   background-color: var(--color-table-even-row-bg);
+}
+tbody tr:nth-child(odd) td:not([rowspan]) {
+  background-color: var(--color-table-odd-row-bg);
 }
 tbody tr:hover td {
   background-color: var(--color-table-hover-bg) !important;
