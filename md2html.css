@@ -393,33 +393,38 @@ h1 {
 }
 h2 {
   font-size: 1.5rem;
-  border-bottom: 3px solid;
-  border-image: linear-gradient(to right, rgb(var(--color-header-h2)) 0%, rgb(var(--color-header-h2)) 60%, transparent 100%) 1;
-  width: 8em;
+  text-decoration: underline;
+  text-decoration-color: rgb(var(--color-header-h2));
+  text-decoration-thickness: 3px;
+  text-decoration-style: solid;
 }
 h3 {
   font-size: 1.4rem;
-  border-bottom: 3px solid;
-  border-image: linear-gradient(to right, rgb(var(--color-header-h3)) 0%, rgb(var(--color-header-h3)) 60%, transparent 100%) 1;
-  width: 8em;
+  text-decoration: underline;
+  text-decoration-color: rgb(var(--color-header-h3));
+  text-decoration-thickness: 3px;
+  text-decoration-style: solid;
 }
 h4 {
   font-size: 1.3rem;
-  border-bottom: 2px solid;
-  border-image: linear-gradient(to right, rgb(var(--color-header-h4)) 0%, rgb(var(--color-header-h4)) 60%, transparent 100%) 1;
-  width: 8em;
+  text-decoration: underline;
+  text-decoration-color: rgb(var(--color-header-h4));
+  text-decoration-thickness: 2px;
+  text-decoration-style: solid;
 }
 h5 {
   font-size: 1.2rem;
-  border-bottom: 2px solid;
-  border-image: linear-gradient(to right, rgb(var(--color-header-h5)) 0%, rgb(var(--color-header-h5)) 60%, transparent 100%) 1;
-  width: 8em;
+  text-decoration: underline;
+  text-decoration-color: rgb(var(--color-header-h5));
+  text-decoration-thickness: 2px;
+  text-decoration-style: solid;
 }
 h6 {
   font-size: 1.1rem;
-  border-bottom: 2px solid;
-  border-image: linear-gradient(to right, rgb(var(--color-header-h6)) 0%, rgb(var(--color-header-h6)) 60%, transparent 100%) 1;
-  width: 8em;
+  text-decoration: underline;
+  text-decoration-color: rgb(var(--color-header-h6));
+  text-decoration-thickness: 2px;
+  text-decoration-style: solid;
 }
 
 /* ========================== Signature ========================== */
