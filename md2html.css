@@ -19,8 +19,8 @@
 
   --color-text-normal: #555555;
   --color-text-quote: #999999;
-  --color-text-italic: #4b0082;
-  --color-text-bold: #4b0082;
+  --color-text-italic: #000000;
+  --color-text-bold: #000000;
   --color-text-head: #222222;
 
   --color-admonition-border-tip: 66, 185, 131; /* #42b983 */
@@ -38,18 +38,18 @@
   --color-quote-border: var(--color-text-quote);
   --color-quote-bg: var(--color-codeblock-bg);
 
-  --padding-xy-box: 0.5rem;
-  --margin-y-box: 1rem;
+  --padding-box-xy: 0.5rem;
+  --margin-box-y: 1rem;
 
   --border-table: 1px solid var(--color-table-border);
-  --border-radius-box: 4px;
+  --border-box-radius: 4px;
 
   --shadow-box: 0 2px 4px var(--color-shadow);
 
   --font-size-root: 18px;
   --font-size-caption: 1.1rem;
 
-  --gap-code-pair-item: 0.8rem;
+  --gap-block-pair-item: 0.8rem;
 
   --transition-hover: all 0.2s ease;
 }
@@ -69,7 +69,7 @@ html {
 
 body {
   color: var(--color-text-normal);
-  padding: var(--padding-xy-box);
+  padding: var(--padding-box-xy);
   margin: 0;
   /* 如果注释掉就会导致很多 overflow don't know why */
   height: 100%;
@@ -103,10 +103,10 @@ strong {
 
 /* ========================== Code blocks (with prism) ========================== */
 pre {
-  margin: var(--margin-y-box) 0;
-  padding: var(--padding-xy-box) !important;
+  margin: var(--margin-box-y) 0;
+  padding: var(--padding-box-xy) !important;
   background-color: var(--color-codeblock-bg);
-  border-radius: var(--border-radius-box);
+  border-radius: var(--border-box-radius);
   box-shadow: var(--shadow-box);
   overflow-x: auto;
 }
@@ -132,8 +132,8 @@ pre code {
   align-items: center;
   justify-content: center;
   position: relative;
-  gap: var(--gap-code-pair-item);
-  margin: var(--margin-y-box) 0;
+  gap: var(--gap-block-pair-item);
+  margin: var(--margin-box-y) 0;
 }
 /* TODO: make block-pair-item also a flex container (column) */
 .block-pair-item {
@@ -145,13 +145,13 @@ pre code {
   flex: 0 0 auto;
 }
 .block-pair[alt] {
-  margin-top: calc(var(--margin-y-box) + var(--font-size-caption) + 0.5rem);
+  margin-top: calc(var(--margin-box-y) + var(--font-size-caption) + 0.5rem);
 }
 .block-pair[alt]::before {
   display: block;
   content: attr(alt);
   position: absolute;
-  top: calc(var(--margin-y-box) * -1 - 0.5rem);
+  top: calc(var(--margin-box-y) * -1 - 0.5rem);
   width: 100%;
   font-size: var(--font-size-caption);
   font-weight: 700;
@@ -165,11 +165,11 @@ pre code {
 
 /* ========================== Blockquotes ========================== */
 blockquote {
-  margin: var(--margin-y-box) 0;
-  padding: var(--padding-xy-box);
+  margin: var(--margin-box-y) 0;
+  padding: var(--padding-box-xy);
   background-color: var(--color-quote-bg);
   border-left: 4px solid var(--color-quote-border);
-  border-radius: var(--border-radius-box);
+  border-radius: var(--border-box-radius);
   box-shadow: var(--shadow-box);
   color: var(--color-text-quote);
 }
@@ -180,11 +180,11 @@ blockquote p {
 
 /* ========================== Admonitions ========================== */
 .admonition {
-  margin: var(--margin-y-box) 0;
-  padding: var(--padding-xy-box);
+  margin: var(--margin-box-y) 0;
+  padding: var(--padding-box-xy);
   background-color: var(--color-codeblock-bg);
   border-left: 4px solid;
-  border-radius: var(--border-radius-box);
+  border-radius: var(--border-box-radius);
   box-shadow: var(--shadow-box);
   color: var(--color-text-quote);
   display: flex;
@@ -254,14 +254,14 @@ blockquote p {
 /* ========================== Table =========================== */
 .table-wrapper {
   overflow-x: auto;
-  margin: var(--margin-y-box) auto;
+  margin: var(--margin-box-y) auto;
 }
 table {
   display: table;
   border-collapse: collapse;
   width: auto;
   margin: 0 auto;
-  border-radius: var(--border-radius-box);
+  border-radius: var(--border-box-radius);
   box-shadow: var(--shadow-box);
 }
 th {
@@ -313,7 +313,7 @@ td img {
 
 /* ========================== Images and Figures ========================== */
 figure {
-  margin: var(--margin-y-box) auto;
+  margin: var(--margin-box-y) auto;
   text-align: center;
 }
 figcaption {
@@ -321,7 +321,7 @@ figcaption {
   font-style: italic;
 }
 img {
-  border-radius: var(--border-radius-box);
+  border-radius: var(--border-box-radius);
   box-shadow: var(--shadow-box);
 }
 img.note-inline-img {
@@ -333,7 +333,7 @@ img.note-inline-img {
 /* ========================== Lists ========================== */
 ul,
 ol {
-  margin: calc(var(--margin-y-box) / 2) 0;
+  margin: calc(var(--margin-box-y) / 2) 0;
   padding-left: 2rem;
 }
 
@@ -432,7 +432,7 @@ h6 {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 0 var(--margin-y-box) 0;
+  margin: 0 0 var(--margin-box-y) 0;
 }
 .signature > p {
   margin: 0;
