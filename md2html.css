@@ -6,7 +6,8 @@
 :root {
   --color-highlight-bg: #e6f3ff;
 
-  --color-page-bg: rgba(251, 245, 223, 0.8);
+  --color-page-bg: #fbf5df;
+  --color-sidebar-bg: #eae5d0;
 
   --color-header-h1: 119, 160, 255; /* #77a0ff */
   --color-header-h2: 255, 192, 98; /* #ffc062 */
