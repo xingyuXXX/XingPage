@@ -91,7 +91,7 @@
 
 ## 西红柿土豆炖牛肉
 
-食材： Beinscheibe $\times 1000g$，西红柿 $\times 2$，罐头番茄 $\times 400g$，中等大小土豆 $\times 3$，洋葱 $\times 1$
+食材： Beinscheibe $\times 1000g$，西红柿 $\times 2$，罐头番茄 $\times 400g$，土豆 $\times 700g$，洋葱 $\times 1$
 
 1. 焯水后沥干
 2. 葱姜蒜爆香，放牛肉，炒至上色，加入洋葱、5 勺盐、1 勺生抽，炒出香味
