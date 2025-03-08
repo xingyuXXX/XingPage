@@ -264,10 +264,10 @@ tbody tr:first-child td {
 tbody tr:last-child td {
   border-bottom: var(--border-table);
 }
-tbody tr:nth-child(even) td:not([rowspan]) {
+tbody tr:nth-child(even) td {
   background-color: var(--color-table-even-row-bg);
 }
-tbody tr:nth-child(odd) td:not([rowspan]) {
+tbody tr:nth-child(odd) td {
   background-color: var(--color-table-odd-row-bg);
 }
 tbody tr:hover td {
