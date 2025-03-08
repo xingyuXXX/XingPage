@@ -1,7 +1,10 @@
 /* this css is used by pandoc when converting markdown to html */
 /* pandoc --standalone=true --output=./test.html --mathjax --css=./md2html.css --lua-filter=./admonition.lua --number-sections=true markPre.md */
 
-@import url("https://fonts.googleapis.com/css2?family=Anonymous+Pro:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Anonymous+Pro&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Sawarabi+Mincho&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=New+Tegomin&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@200..900&display=swap");
 
 :root {
   --color-highlight-bg: #e6f3ff;
@@ -41,8 +44,11 @@
 
   --shadow-box: 0 2px 4px rgba(0, 0, 0, 0.1);
 
-  --font-size-root: 18px;
+  --font-size-root: 16px;
   --font-size-caption: 1.1rem;
+  --font-family-normal: "Sawarabi Mincho", serif;
+  --font-family-header: "New Tegomin", serif;
+  --font-family-code: "Anonymous Pro", monospace;
 
   --gap-block-pair-item: 0.8rem;
 
@@ -69,6 +75,7 @@ body {
   /* 如果注释掉就会导致很多 overflow don't know why */
   height: 100%;
   width: 100%;
+  font-family: var(--font-family-normal);
 }
 
 body * {
@@ -96,9 +103,10 @@ pre {
   overflow-x: auto;
 }
 code {
-  font-family: "Anonymous Pro", monospace !important;
-  font-size: 0.9rem !important;
-  white-space: pre;
+  font-family: var(--font-family-code) !important;
+  font-size: 1rem !important;
+  line-height: 1.2 !important;
+  white-space: pre !important;
 }
 code:hover {
   background-color: var(--color-highlight-bg) !important;
@@ -332,6 +340,7 @@ h6 {
   margin: 2rem 0 1rem 0;
   font-weight: 600;
   line-height: 1.25;
+  font-family: var(--font-family-header);
 }
 h1::before,
 h2::before,
