@@ -1,0 +1,309 @@
+/* Import Google Font */
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap");
+
+/* Define CSS Variables */
+:root {
+  /* Size Variables */
+  --body-padding: 12px;
+  --table-gap: 12px;
+  --section-gap: 50px;
+  --separator-height: 12px;
+  --table-min-width: 280px;
+
+  /* Color Variables */
+  --color-page-background: rgba(251, 245, 223, 0.8);
+
+  --color-background-normal: rgba(190, 220, 190, 0.4);
+  --color-background-visual: rgba(240, 180, 190, 0.4);
+  --color-background-insert: rgba(250, 210, 190, 0.4);
+  --color-background-last: rgba(210, 190, 220, 0.4);
+  --color-background-operator: rgba(180, 200, 230, 0.4);
+
+  --color-border: #ddd;
+
+  --color-text-unused: rgba(153, 153, 153, 0.6);
+
+  --color-code-background: #e8f4f8;
+  --color-code-text: #005f73;
+  --color-code-border: #d1e7ed;
+  --color-code-hover-background: #d1e7ed;
+  --color-code-hover-text: #003845;
+
+  --color-code-unused-background: rgba(220, 220, 220, 0.6);
+  --color-code-unused-text: rgba(120, 120, 120, 0.8);
+  --color-code-unused-border: rgba(200, 200, 200, 0.8);
+  --color-code-unused-hover-background: rgba(190, 190, 190, 0.8);
+  --color-code-unused-hover-text: rgba(100, 100, 100, 1);
+  --color-code-unused-hover-border: rgba(180, 180, 180, 0.8);
+}
+
+/* Global Styles */
+body {
+  font-family: Helvetica, sans-serif;
+  padding: var(--body-padding);
+  box-sizing: border-box;
+  margin: 0;
+  background-color: var(--color-page-background);
+}
+
+#main-container {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  gap: var(--section-gap);
+  width: 100%;
+}
+
+.section {
+  width: 100%;
+}
+
+.title {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--color-code-text);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  border-bottom: 5px groove var(--color-code-border);
+  margin: var(--body-padding);
+}
+
+.table-container {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  gap: var(--table-gap);
+  width: 100%;
+  box-sizing: border-box;
+  align-items: flex-start;
+}
+
+table {
+  flex: 1 1 auto;
+  min-width: var(--table-min-width);
+  border-collapse: collapse;
+  table-layout: auto;
+}
+
+table td {
+  border-top: 0.5px solid var(--color-border);
+  border-bottom: 0.5px solid var(--color-border);
+  padding: 5px;
+  overflow-wrap: break-word;
+}
+
+table td:nth-child(1) {
+  text-align: left;
+  white-space: nowrap;
+}
+
+table td:nth-child(2) {
+  text-align: right;
+  font-size: 0.9rem;
+}
+
+.type-normal {
+  background-color: var(--color-background-normal);
+}
+
+.type-visual {
+  background-color: var(--color-background-visual);
+}
+
+.type-insert {
+  background-color: var(--color-background-insert);
+}
+
+.type-last {
+  background-color: var(--color-background-last);
+}
+
+.type-operator {
+  background-color: var(--color-background-operator);
+}
+
+/* Multiple type gradient backgrounds */
+.type-operator.type-visual {
+  background: linear-gradient(to right,
+    var(--color-background-operator) 0%,
+    var(--color-background-operator) 20%,
+    var(--color-background-visual) 80%,
+    var(--color-background-visual) 100%
+  );
+}
+
+.type-operator.type-normal {
+  background: linear-gradient(to right,
+    var(--color-background-operator) 0%,
+    var(--color-background-operator) 20%,
+    var(--color-background-normal) 80%,
+    var(--color-background-normal) 100%
+  );
+}
+
+.type-operator.type-insert {
+  background: linear-gradient(to right,
+    var(--color-background-operator) 0%,
+    var(--color-background-operator) 20%,
+    var(--color-background-insert) 80%,
+    var(--color-background-insert) 100%
+  );
+}
+
+.type-operator.type-last {
+  background: linear-gradient(to right,
+    var(--color-background-operator) 0%,
+    var(--color-background-operator) 20%,
+    var(--color-background-last) 80%,
+    var(--color-background-last) 100%
+  );
+}
+
+.type-visual.type-normal {
+  background: linear-gradient(to right,
+    var(--color-background-visual) 0%,
+    var(--color-background-visual) 20%,
+    var(--color-background-normal) 80%,
+    var(--color-background-normal) 100%
+  );
+}
+
+.type-visual.type-insert {
+  background: linear-gradient(to right,
+    var(--color-background-visual) 0%,
+    var(--color-background-visual) 20%,
+    var(--color-background-insert) 80%,
+    var(--color-background-insert) 100%
+  );
+}
+
+.unused {
+  color: var(--color-text-unused);
+}
+
+.separator td {
+  border: none;
+  padding: 0;
+  height: var(--separator-height);
+}
+
+.separator.desc td {
+  font-size: 1.5rem;
+  text-align: left;
+  padding: 4px;
+  font-weight: bold;
+  color: var(--color-code-text);
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-decoration-style: double;
+  text-underline-offset: 2px;
+}
+
+code {
+  font-family: "Roboto Mono", monospace;
+  background-color: var(--color-code-background);
+  color: var(--color-code-text);
+  padding: 0.5px 2.5px;
+  border: 1px solid var(--color-code-border);
+  border-radius: 4px;
+  /* font-size: 0.9em; */
+  white-space: nowrap;
+  transition: background-color 0.3s, color 0.3s;
+  cursor: default;
+  line-height: 1.8;
+}
+
+code:hover {
+  background-color: var(--color-code-hover-background);
+  color: var(--color-code-hover-text);
+}
+
+.unused code {
+  background-color: var(--color-code-unused-background);
+  color: var(--color-code-unused-text);
+  border: 1px solid var(--color-code-unused-border);
+}
+
+.unused code:hover {
+  background-color: var(--color-code-unused-hover-background);
+  color: var(--color-code-unused-hover-text);
+  border-color: var(--color-code-unused-hover-border);
+}
+
+/* 定义高亮效果的样式 */
+.highlight {
+  animation: highlightFadeOut 3s forwards;
+}
+
+/* 定义高亮效果的动画 */
+@keyframes highlightFadeOut {
+  0% {
+    outline: 6px solid rgba(255, 165, 0, 1); /* 初始高亮颜色，例如橙色 */
+  }
+  100% {
+    outline: 6px solid rgba(255, 165, 0, 0); /* 渐变为透明 */
+  }
+}
+
+a {
+  text-decoration: none;
+}
+
+.info-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: var(--color-code-background);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  z-index: 1000;
+  transition: all 0.3s ease;
+}
+
+.info-button i {
+  color: var(--color-code-text);
+  font-size: 20px;
+}
+
+.info-content {
+  position: absolute;
+  bottom: 50px;
+  right: 0;
+  width: 200px;
+  background-color: white;
+  border-radius: 8px;
+  padding: 15px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+}
+
+.info-button:hover .info-content,
+.info-content.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.info-header {
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: var(--color-code-text);
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: 5px;
+}
+
+.info-item {
+  padding: 8px;
+  margin: 5px 0;
+  border-radius: 4px;
+  font-size: 0.9em;
+}

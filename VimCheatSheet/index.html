@@ -1,0 +1,696 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Vim Cheat Sheet</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="icon" href="./favicon-vim.ico" type="image/x-icon" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+  </head>
+
+  <body>
+    <div id="main-container">
+      <div class="section">
+        <h2 class="title">Vim</h2>
+        <div class="table-container">
+          <table>
+            <tbody>
+              <tr class="separator desc">
+                <td colspan="2">Navigation</td>
+              </tr>
+              <tr class="type-normal">
+                <td>
+                  <code>h</code> (<code>⌫</code>) <code>l</code> <br />
+                  <code>j</code> (<code>↩︎</code>) <code>k</code>
+                </td>
+                <td>
+                  left/right <br />
+                  down/up
+                </td>
+              </tr>
+              <tr class="type-normal">
+                <td><code>^b</code> <code>^f</code></td>
+                <td>one page backward/forward</td>
+              </tr>
+              <tr class="type-normal">
+                <td><code>^u</code> <code>^d</code></td>
+                <td>half page up/down</td>
+              </tr>
+              <tr class="type-normal unused">
+                <td><code>12j</code></td>
+                <td>down 12 lines</td>
+              </tr>
+              <tr class="type-normal unused">
+                <td>
+                  <code>zt</code> <code>zz</code> <br />
+                  <code>zb</code>
+                </td>
+                <td>top/center/bottom this line</td>
+              </tr>
+
+              <tr class="separator">
+                <td colspan="2"></td>
+              </tr>
+              <tr class="type-normal">
+                <td><code>w</code> <code class="unused">W</code></td>
+                <td>next word/WORD</td>
+              </tr>
+              <tr class="type-normal">
+                <td><code>b</code> <code class="unused">B</code></td>
+                <td>begin of word/WORD</td>
+              </tr>
+              <tr class="type-normal">
+                <td><code>e</code> <code class="unused">E</code></td>
+                <td>end of word/WORD</td>
+              </tr>
+              <tr class="type-normal unused">
+                <td><code>ge</code> <code>gE</code></td>
+                <td>go end of prev word/WORD</td>
+              </tr>
+
+              <tr class="separator">
+                <td colspan="2"></td>
+              </tr>
+              <tr class="type-normal">
+                <td><code>0</code> <code>$</code></td>
+                <td>start/end of line</td>
+              </tr>
+              <tr class="type-normal unused">
+                <td><code>^</code> <code>g_</code></td>
+                <td>first/last non-blank character of line</td>
+              </tr>
+
+              <tr class="separator">
+                <td colspan="2"></td>
+              </tr>
+              <tr class="type-normal">
+                <td><code>(</code> <code>)</code></td>
+                <td>prev/next sentence</td>
+              </tr>
+              <tr class="type-normal unused">
+                <td><code>{</code> <code>}</code></td>
+                <td>prev/next paragraph</td>
+              </tr>
+
+              <tr class="separator">
+                <td colspan="2"></td>
+              </tr>
+              <tr class="type-normal">
+                <td><code>gg</code> <code>G</code></td>
+                <td>first/last line of file</td>
+              </tr>
+              <tr class="type-normal unused">
+                <td><code>12gg</code></td>
+                <td>
+                  go to line 12 <br />
+                  = <code>12G</code>
+                </td>
+              </tr>
+
+              <tr class="separator">
+                <td colspan="2"></td>
+              </tr>
+              <tr class="type-normal">
+                <td><code>%</code></td>
+                <td>jump to matching bracket</td>
+              </tr>
+
+              <tr class="separator desc">
+                <td colspan="2">Search</td>
+              </tr>
+              <tr class="type-normal">
+                <td>
+                  <code>f{char}</code> <br />
+                  <code>F{char}</code>
+                </td>
+                <td>find next char forward/backward</td>
+              </tr>
+              <tr class="type-normal unused">
+                <td>
+                  <code>t{char}</code> <br />
+                  <code>T{char}</code>
+                </td>
+                <td>til (until) next char forward/backward</td>
+              </tr>
+              <tr class="type-normal">
+                <td><code>;</code> <code class="unused">,</code></td>
+                <td>repeat find in same/opposite direction</td>
+              </tr>
+              <tr class="type-normal">
+                <td>
+                  <code>/{regx}</code> <br />
+                  <code>?{regx}</code>
+                </td>
+                <td>search regx forward/backward</td>
+              </tr>
+              <tr class="type-visual">
+                <td><code>*</code> <code>#</code></td>
+                <td>search selection forward/backward</td>
+              </tr>
+              <tr class="type-normal">
+                <td><code>n</code> <code>N</code></td>
+                <td>repeat search in same/opposite direction</td>
+              </tr>
+
+              <tr class="separator desc">
+                <td colspan="2">Mark</td>
+              </tr>
+              <tr class="type-normal unused">
+                <td><code>m{mark}</code></td>
+                <td>mark position</td>
+              </tr>
+              <tr class="type-normal unused">
+                <td><code>`{mark}</code></td>
+                <td>jump to line and column of mark</td>
+              </tr>
+              <tr class="type-normal unused">
+                <td><code>'{mark}</code></td>
+                <td>jump to line of mark</td>
+              </tr>
+
+              <tr class="separator">
+                <td colspan="2"></td>
+              </tr>
+              <tr class="type-normal">
+                <td><code>^o</code> <code>^i</code></td>
+                <td>jump back/forward from jump list</td>
+              </tr>
+
+              <tr class="separator desc">
+                <td colspan="2">Edit</td>
+              </tr>
+              <tr class="type-normal">
+                <td><code>i</code> <code>a</code></td>
+                <td>insert/append in cursor</td>
+              </tr>
+              <tr class="type-normal">
+                <td><code>I</code> <code>A</code></td>
+                <td>insert/append in line</td>
+              </tr>
+              <tr class="type-normal">
+                <td><code>o</code> <code>O</code></td>
+                <td>open a new line below/above</td>
+              </tr>
+              <tr class="type-normal">
+                <td><code>J</code></td>
+                <td>join line below</td>
+              </tr>
+
+              <tr class="separator">
+                <td colspan="2"></td>
+              </tr>
+              <tr class="type-normal">
+                <td><code>gcc</code></td>
+                <td>toggle comment</td>
+              </tr>
+              <tr class="type-visual">
+                <td><code>gc</code></td>
+                <td>toggle comment</td>
+              </tr>
+              <tr class="type-visual">
+                <td><code>u</code> <code>U</code></td>
+                <td>lowercase/uppercase</td>
+              </tr>
+
+              <tr class="separator">
+                <td colspan="2"></td>
+              </tr>
+              <tr class="type-normal">
+                <td><code>x</code> <code class="unused">X</code></td>
+                <td>delete char before/after</td>
+              </tr>
+              <tr class="type-normal unused">
+                <td><code>s</code> <code>S</code></td>
+                <td>change char/line</td>
+              </tr>
+              <tr class="type-normal">
+                <td><code>r</code> <code class="unused">R</code></td>
+                <td>replace character/mode</td>
+              </tr>
+              <tr class="type-normal unused">
+                <td><code>C</code></td>
+                <td>change to end of line</td>
+              </tr>
+              <tr class="type-normal">
+                <td><code>dd</code></td>
+                <td>delete line</td>
+              </tr>
+              <tr class="type-normal">
+                <td><code>yy</code></td>
+                <td>yank line</td>
+              </tr>
+              <tr class="type-insert">
+                <td><code>^h</code> <code>^w</code> <code>^u</code></td>
+                <td>delete back one char/word/line</td>
+              </tr>
+
+              <tr class="separator">
+                <td colspan="2"></td>
+              </tr>
+              <tr class="type-normal">
+                <td><code>p</code> <code>P</code></td>
+                <td>put after/before cursor</td>
+              </tr>
+              <tr class="type-normal unused">
+                <td><code>]p</code></td>
+                <td>put after cursor with indent</td>
+              </tr>
+              <tr class="type-normal unused">
+                <td><code>"+p</code> <code>"+y</code></td>
+                <td>put from/to system clipboard</td>
+              </tr>
+              <tr class="type-insert">
+                <td><code>^r{reg}</code></td>
+                <td>put from register</td>
+              </tr>
+
+              <tr class="separator">
+                <td colspan="2"></td>
+              </tr>
+              <tr class="type-normal type-visual">
+                <td><code>^a</code> <code>^x</code></td>
+                <td>add/subtract a number</td>
+              </tr>
+
+              <tr class="separator desc">
+                <td colspan="2">Indent</td>
+              </tr>
+              <tr class="type-normal">
+                <td><code>&gt;&gt;</code> <code>&lt;&lt;</code></td>
+                <td>indent/de-indent</td>
+              </tr>
+              <tr class="type-normal">
+                <td><code>&gt;%</code> <code>&lt;%</code></td>
+                <td>indent/de-indent block</td>
+              </tr>
+              <tr class="type-insert">
+                <td><code>^t</code> <code>^d</code></td>
+                <td>indent/de-indent</td>
+              </tr>
+
+              <tr class="separator desc">
+                <td colspan="2">Spell</td>
+              </tr>
+              <tr class="type-normal">
+                <td><code>z=</code></td>
+                <td>spell suggest</td>
+              </tr>
+              <tr class="type-normal">
+                <td><code>zg</code> <code>zw</code></td>
+                <td>mark word as good/wrong</td>
+              </tr>
+              <tr class="type-normal unused">
+                <td><code>zug</code> <code>zuw</code></td>
+                <td>undo good/wrong</td>
+              </tr>
+              <tr class="type-normal">
+                <td><code>]s</code> <code>[s</code></td>
+                <td>jump to next/prev misspelled word</td>
+              </tr>
+
+              <tr class="separator desc">
+                <td colspan="2">Window &amp; Buffer &amp; Tab</td>
+              </tr>
+              <tr class="type-normal unused">
+                <td>
+                  <code>^wh</code> <code>^wj</code> <br />
+                  <code>^wk</code> <code>^wl</code>
+                </td>
+                <td>
+                  focus left/lower/upper/right window
+                  <a href="#anchor-window-focus"><i class="fa-regular fa-circle-up"></i></a>
+                </td>
+              </tr>
+              <tr class="type-normal unused">
+                <td><code>^wv</code> <code>^ws</code></td>
+                <td>split vertically/horizontally</td>
+              </tr>
+              <tr class="type-normal unused">
+                <td><code>^wc</code></td>
+                <td>close window (not close buffer)</td>
+              </tr>
+              <tr class="type-normal unused">
+                <td><code>^wq</code></td>
+                <td>quit window (close buffer)</td>
+              </tr>
+
+              <tr class="separator">
+                <td colspan="2"></td>
+              </tr>
+              <tr class="type-last unused">
+                <td>
+                  <code>:bnext</code> <br />
+                  <code>:bprev</code>
+                </td>
+                <td>
+                  next/prev buffer
+                  <a href="#anchor-switch-buffer"><i class="fa-regular fa-circle-up"></i></a>
+                </td>
+              </tr>
+
+              <tr class="separator">
+                <td colspan="2"></td>
+              </tr>
+              <tr class="type-last unused">
+                <td>
+                  <code>:tabn</code> <br />
+                  <code>:tabp</code>
+                </td>
+                <td>next/prev tab</td>
+              </tr>
+
+              <tr class="separator desc">
+                <td colspan="2">Exit</td>
+              </tr>
+              <tr class="type-last">
+                <td><code>:w</code></td>
+                <td><code>:write</code> file (save)</td>
+              </tr>
+              <tr class="type-last">
+                <td><code>:q</code></td>
+                <td><code>:quit</code></td>
+              </tr>
+              <tr class="type-last">
+                <td><code>:q!</code></td>
+                <td>quit without saving</td>
+              </tr>
+              <tr class="type-last">
+                <td><code>:wq</code></td>
+                <td>write and quit</td>
+              </tr>
+              <tr class="type-last unused">
+                <td><code>:x</code></td>
+                <td>
+                  write (if changes) and quit <br />
+                  = <code>:exit</code>
+                </td>
+              </tr>
+              <tr class="type-normal unused">
+                <td><code>ZQ</code></td>
+                <td>= <code>:q!</code></td>
+              </tr>
+              <tr class="type-last unused">
+                <td><code>:e!</code></td>
+                <td>revert changes</td>
+              </tr>
+              <tr class="type-last unused">
+                <td><code>:qa</code></td>
+                <td>
+                  = <code>:quitall</code>
+                  <a href="#anchor-lqq"><i class="fa-regular fa-circle-up"></i></a>
+                </td>
+              </tr>
+              <tr class="type-normal unused">
+                <td><code>ZZ</code></td>
+                <td>= <code>:x</code></td>
+              </tr>
+
+              <tr class="separator desc">
+                <td colspan="2">Operator</td>
+              </tr>
+              <tr class="type-operator type-visual">
+                <td><code>d</code></td>
+                <td>delete (cut)</td>
+              </tr>
+              <tr class="type-operator type-visual">
+                <td><code>y</code></td>
+                <td>yank (copy)</td>
+              </tr>
+              <tr class="type-operator type-visual">
+                <td><code>c</code></td>
+                <td>change (delete then insert)</td>
+              </tr>
+              <tr class="type-operator type-visual unused">
+                <td><code>g~</code></td>
+                <td>toggle case</td>
+              </tr>
+              <tr class="type-operator unused type-visual">
+                <td><code>gu</code> <code>gU</code></td>
+                <td>lowercase/uppercase</td>
+              </tr>
+              <tr class="type-operator type-visual">
+                <td><code>=</code></td>
+                <td>auto-indent</td>
+              </tr>
+              <tr class="type-operator type-visual">
+                <td><code>&gt;</code> <code>&lt;</code></td>
+                <td>shift right/left</td>
+              </tr>
+              <tr class="type-operator unused type-visual">
+                <td><code>!</code></td>
+                <td>filter through external command</td>
+              </tr>
+              <tr class="type-operator unused type-visual">
+                <td><code>gq</code></td>
+                <td>format text</td>
+              </tr>
+
+              <tr class="separator desc">
+                <td colspan="2">MISC</td>
+              </tr>
+              <tr class="type-normal">
+                <td><code>u</code> <code>U</code></td>
+                <td>undo last change/line</td>
+              </tr>
+              <tr class="type-normal">
+                <td><code>^r</code></td>
+                <td>redo</td>
+              </tr>
+              <tr class="type-normal">
+                <td><code>.</code></td>
+                <td>repeat last command</td>
+              </tr>
+
+              <tr class="separator">
+                <td colspan="2"></td>
+              </tr>
+              <tr class="type-insert">
+                <td><code>^o{cmd}</code></td>
+                <td>enter normal mode for one cmd</td>
+              </tr>
+
+              <tr class="separator">
+                <td colspan="2"></td>
+              </tr>
+              <tr class="type-normal">
+                <td><code>q:</code></td>
+                <td>
+                  open command-line window <br />
+                  <code>^c</code> to close
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2 class="title">LazyVim</h2>
+        <div class="table-container">
+          <table>
+            <tbody>
+              <tr class="separator desc">
+                <td colspan="2">
+                  <a href="https://www.lazyvim.org/keymaps#general">General</a>
+                </td>
+              </tr>
+              <tr class="type-normal" id="anchor-window-focus">
+                <td>
+                  <code>^h</code> <code>^j</code> <br />
+                  <code>^k</code> <code>^l</code>
+                </td>
+                <td>focus left/lower/upper/right window</td>
+              </tr>
+              <tr class="type-normal" id="anchor-window-focus">
+                <td>
+                  <code>^↑</code> <code>^↓</code> <br />
+                  <code>^→</code> <code>^←</code>
+                </td>
+                <td>increase/decrease window height/width</td>
+              </tr>
+              <tr class="type-normal" id="anchor-switch-buffer">
+                <td><code>H</code> <code>L</code></td>
+                <td>prev/next buffer</td>
+              </tr>
+              <tr class="type-normal">
+                <td><code>^/</code></td>
+                <td>toggle terminal</td>
+              </tr>
+              <tr class="type-normal">
+                <td><code>^s</code></td>
+                <td>save file</td>
+              </tr>
+              <tr class="type-normal">
+                <td><code>⎈wd</code></td>
+                <td>window delete</td>
+              </tr>
+              <tr class="type-normal" id="anchor-lqq">
+                <td><code>⎈qq</code></td>
+                <td>= <code>:qa</code></td>
+              </tr>
+
+              <tr class="separator desc">
+                <td colspan="2">
+                  <a href="https://github.com/nvim-treesitter/nvim-treesitter">nvim-treesitter</a>
+                </td>
+              </tr>
+              <tr class="type-normal">
+                <td><code>⌫</code> <code>^⎵</code></td>
+                <td>selection decrement/increment</td>
+              </tr>
+
+              <tr class="separator desc">
+                <td colspan="2">
+                  <a href="https://github.com/ibhagwan/fzf-lua">fzf-lua</a>
+                </td>
+              </tr>
+              <tr class="type-normal">
+                <td><code>⎈⎵</code></td>
+                <td>find files (root dir)</td>
+              </tr>
+              <tr class="type-normal">
+                <td><code>⎈fr</code></td>
+                <td>find recent files (global)</td>
+              </tr>
+              <tr class="type-normal unused">
+                <td><code>⎈sc</code></td>
+                <td>search command history</td>
+              </tr>
+              <tr class="type-normal unused">
+                <td><code>⎈sk</code></td>
+                <td>search keymaps</td>
+              </tr>
+
+              <tr class="separator desc">
+                <td colspan="2">
+                  <a href="https://github.com/folke/which-key.nvim">which-key.nvim</a>
+                </td>
+              </tr>
+              <tr class="type-normal">
+                <td><code>⎈?</code></td>
+                <td>buffer keymaps</td>
+              </tr>
+
+              <tr class="separator desc">
+                <td colspan="2">
+                  <a href="https://github.com/gbprod/yanky.nvim">yanky.nvim</a>
+                </td>
+              </tr>
+              <tr class="type-normal">
+                <td><code>⎈p</code></td>
+                <td>yank history</td>
+              </tr>
+
+              <tr class="separator desc">
+                <td colspan="2">
+                  <a href="https://github.com/folke/snacks.nvim">snacks.nvim</a>
+                </td>
+              </tr>
+              <tr class="type-normal">
+                <td><code>⎈n</code></td>
+                <td>notification history</td>
+              </tr>
+
+              <tr class="separator desc">
+                <td colspan="2">
+                  <a href="https://github.com/echasnovski/mini.surround">mini.surround</a>
+                </td>
+              </tr>
+              <tr class="type-normal">
+                <td><code>gsa</code> <code>gsd</code> <code>gsr</code></td>
+                <td>add/delete/replace surrounding</td>
+              </tr>
+
+              <tr class="separator desc">
+                <td colspan="2">
+                  <a href="https://github.com/folke/flash.nvim">flash.nvim</a>
+                </td>
+              </tr>
+              <tr class="type-normal">
+                <td><code>s</code> <code>S</code></td>
+                <td>seek/treeSitter</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2 class="title">Others</h2>
+        <div class="table-container">
+          <table>
+            <tbody>
+              <tr class="separator desc">
+                <td colspan="2">iTerm2</td>
+              </tr>
+              <tr>
+                <td><code>⌘/</code></td>
+                <td>find cursor</td>
+              </tr>
+
+              <tr class="separator desc">
+                <td colspan="2">VscodeVim</td>
+              </tr>
+              <tr class="type-normal">
+                <td>
+                  <code>ys{motion}{desired}</code> <br />
+                  <code>ds{existing}</code> <br />
+                  <code>cs{existing}{desired}</code>
+                </td>
+                <td>surround</td>
+              </tr>
+
+              <tr class="separator">
+                <td colspan="2"></td>
+              </tr>
+              <tr class="type-normal">
+                <td>
+                  <code>⎈⎈s{char}</code> <br />
+                  <code>⎈⎈w</code> <br />
+                  <code>⎈⎈b</code> <code>⎈⎈e</code> <br />
+                  <code>⎈⎈j</code> <code>⎈⎈k</code> <br />
+                  <code>⎈⎈⎈j</code>
+                </td>
+                <td>easy motion</td>
+              </tr>
+
+              <tr class="separator">
+                <td colspan="2"></td>
+              </tr>
+              <tr class="type-normal unused">
+                <td>
+                  <code>s{char}{char}</code> <br />
+                  <code>S{char}{char}</code>
+                </td>
+                <td>sneak</td>
+              </tr>
+
+              <tr class="separator">
+                <td colspan="2"></td>
+              </tr>
+              <tr class="type-normal">
+                <td><code>ae</code> <code>ie</code></td>
+                <td>entire TO</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="info-button" id="infoButton">
+      <i class="fas fa-info-circle"></i>
+      <div class="info-content">
+        <div class="info-header">Mode Colors</div>
+        <div class="info-item type-normal">Normal Mode</div>
+        <div class="info-item type-visual">Visual Mode</div>
+        <div class="info-item type-insert">Insert Mode</div>
+        <div class="info-item type-last">Command Mode</div>
+        <div class="info-item type-operator">Operator</div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="info-btn.js"></script>
+  </body>
+</html>
