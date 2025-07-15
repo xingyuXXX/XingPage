@@ -313,8 +313,8 @@
               </tr>
               <tr class="type-normal unused">
                 <td>
-                  <code>^wh</code> <code>^wj</code> <br />
-                  <code>^wk</code> <code>^wl</code>
+                  <code>^w h</code> <code>^w j</code> <br />
+                  <code>^w k</code> <code>^w l</code>
                 </td>
                 <td>
                   focus left/lower/upper/right window
@@ -322,15 +322,19 @@
                 </td>
               </tr>
               <tr class="type-normal unused">
-                <td><code>^wv</code> <code>^ws</code></td>
+                <td><code>^w w</code></td>
+                <td>switch window</td>
+              </tr>
+              <tr class="type-normal unused">
+                <td><code>^w v</code> <code>^w s</code></td>
                 <td>split vertically/horizontally</td>
               </tr>
               <tr class="type-normal unused">
-                <td><code>^wc</code></td>
+                <td><code>^w c</code></td>
                 <td>close window (not close buffer)</td>
               </tr>
               <tr class="type-normal unused">
-                <td><code>^wq</code></td>
+                <td><code>^w q</code></td>
                 <td>quit window (close buffer)</td>
               </tr>
 
@@ -450,6 +454,22 @@
               </tr>
 
               <tr class="separator desc">
+                <td colspan="2">Diff</td>
+              </tr>
+              <tr class="type-normal">
+                <td><code>]c</code> <code>[c</code></td>
+                <td>next/prev change</td>
+              </tr>
+              <tr class="type-normal">
+                <td><code>do</code> <code>dp</code></td>
+                <td>diff obtain (get diff from other window)<br />diff put (put diff to other window)</td>
+              </tr>
+              <tr class="type-last">
+                <td><code>:diffupdate</code></td>
+                <td>update diff manually</td>
+              </tr>
+
+              <tr class="separator desc">
                 <td colspan="2">MISC</td>
               </tr>
               <tr class="type-normal">
@@ -482,6 +502,14 @@
                   open command-line window <br />
                   <code>^c</code> to close
                 </td>
+              </tr>
+
+              <tr class="separator">
+                <td colspan="2"></td>
+              </tr>
+              <tr class="type-normal">
+                <td><code>zo</code> <code>zc</code></td>
+                <td>open/close fold</td>
               </tr>
             </tbody>
           </table>
@@ -624,14 +652,6 @@
         <div class="table-container">
           <table>
             <tbody>
-              <tr class="separator desc">
-                <td colspan="2">iTerm2</td>
-              </tr>
-              <tr>
-                <td><code>⌘/</code></td>
-                <td>find cursor</td>
-              </tr>
-
               <tr class="separator desc">
                 <td colspan="2">VscodeVim</td>
               </tr>
