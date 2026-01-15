@@ -156,8 +156,8 @@
                 <td colspan="2">Mark</td>
               </tr>
               <tr class="type-normal unused">
-                <td><code>m{mark}</code></td>
-                <td>mark position</td>
+                <td><code>m{a-zA-Z}</code></td>
+                <td>mark position as {a-zA-Z}<br />uppercase marks are global</td>
               </tr>
               <tr class="type-normal unused">
                 <td><code>`{mark}</code></td>
@@ -236,8 +236,16 @@
                 <td>delete line</td>
               </tr>
               <tr class="type-normal">
-                <td><code>yy</code></td>
+                <td><code>D</code></td>
+                <td>delete to end of line</td>
+              </tr>
+              <tr class="type-normal">
+                <td><code>yy</code> or <code>Y</code></td>
                 <td>yank line</td>
+              </tr>
+              <tr class="type-normal">
+                <td><code>cc</code> or <code>S</code></td>
+                <td>delete the line and insert</td>
               </tr>
               <tr class="type-insert">
                 <td><code>^h</code> <code>^w</code> <code>^u</code></td>
