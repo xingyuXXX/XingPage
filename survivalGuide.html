@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>survivalGuide</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/xingyuXXX/XingJsdelivr/Pandoc/md2html.css" />
+  <!-- ======================= prism.js ======================== -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/highlight-keywords/prism-highlight-keywords.min.js"></script>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/plugins/command-line/prism-command-line.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/plugins/command-line/prism-command-line.min.js"></script>
+
+  <!-- <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/normalize-whitespace/prism-normalize-whitespace.min.js"></script> -->
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/plugins/toolbar/prism-toolbar.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/plugins/toolbar/prism-toolbar.min.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
+
+  <!-- ======================== sidebar ======================== -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/xingyuXXX/XingJsdelivr@main/MarkdownSidebarTOC/sidebar.css" />
+  <script src="https://cdn.jsdelivr.net/gh/xingyuXXX/XingJsdelivr@main/MarkdownSidebarTOC/sidebar.js"></script>
+
+  <!-- ======================== highlight.js ======================== -->
+  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/styles/default.min.css" /> -->
+  <!-- <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/highlight.min.js"></script> -->
+  <!-- <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/languages/go.min.js"></script> -->
+  <!-- <script> -->
+  <!--   hljs.highlightAll(); -->
+  <!-- </script> -->
+
+  <!-- ======================== table border for rowspan ======================== -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      document.querySelectorAll("td[rowspan]").forEach((td) => {
+        // 解析 rowspan 的值
+        const rowSpan = parseInt(td.getAttribute("rowspan"), 10);
+        if (isNaN(rowSpan) || rowSpan < 1) return;
+
+        // 找到包含该 td 的 tr（第一行）
+        const firstRow = td.closest("tr");
+        if (!firstRow) return;
+
+        // 2. 同一行中所有 td 添加上边框
+        firstRow.querySelectorAll("td").forEach((cell) => {
+          cell.style.borderTop = "var(--border-table)";
+        });
+
+        // 1. 带有 rowspan 的 td 自身添加上边框和下边框
+        td.style.borderTop = "var(--border-table)";
+        td.style.borderBottom = "var(--border-table)";
+
+        // 获取包含该行的 table 元素
+        const table = firstRow.closest("table");
+        if (!table) return;
+
+        // 获取 table 中所有的 tr 节点
+        const rows = Array.from(table.querySelectorAll("tr"));
+        const firstRowIndex = rows.indexOf(firstRow);
+        const lastRowIndex = firstRowIndex + rowSpan - 1;
+
+        // 3. 在最后一行中所有 td 添加下边框
+        const lastRow = rows[lastRowIndex];
+        if (lastRow) {
+          lastRow.querySelectorAll("td").forEach((cell) => {
+            cell.style.borderBottom = "var(--border-table)";
+          });
+        }
+      });
+    });
+  </script>
+</head>
+<body>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#survival-guide-for-keyboardist"
+id="toc-survival-guide-for-keyboardist">Survival Guide for
+Keyboardist</a></li>
+<li><a href="#pacman" id="toc-pacman">pacman</a></li>
+<li><a href="#k8s" id="toc-k8s">K8s</a></li>
+<li><a href="#linux-terminal" id="toc-linux-terminal">Linux
+Terminal</a></li>
+</ul>
+</nav>
+<h1 id="survival-guide-for-keyboardist">Survival Guide for
+Keyboardist</h1>
+<p><link rel="icon" href="./favicon-flash.ico" type="image/x-icon"></p>
+<h1 id="pacman">pacman</h1>
+<pre class="language-sh"><code>sudo pacman -Syu     # Sync package databases and upgrade all packages (full system upgrade)
+sudo pacman -Syyu    # Force refresh all package databases and do full upgrade (heavier)
+
+sudo pacman -S pkg   # Install a package
+sudo pacman -U pkg   # Install a local package file
+
+sudo pacman -Rns pkg # Remove a package, its unused dependencies, and its config files
+
+pacman -Ss keyword   # Search packages in sync databases (remote repos)
+pacman -Si pkg       # Show detailed info about a remote package
+
+pacman -Qs keyword   # Search installed packages (local database)
+pacman -Qi pkg       # Show detailed info about an installed package
+pacman -Qe           # List explicitly installed packages
+pacman -Qm           # List &quot;foreign&quot; packages (not from official repos; often AUR/manual)
+pacman -Qdtq         # List orphaned dependencies quietly</code></pre>
+<h1 id="k8s">K8s</h1>
+<pre class="language-sh"><code>kubectl cluster-info               # Display cluster information
+kubectl config get-contexts        # List all kubeconfig contexts
+kubectl config use-context context # Switch current context
+kubectl get nodes                  # List all nodes in the cluster
+kubectl describe node node         # Show detailed information about a node
+kubectl get ns                     # List all namespaces
+kubectl create ns namespace        # Create a namespace
+kubectl get pods -n namespace      # List pods in a specific namespace
+kubectl get pods -o wide           # List pods with node and IP info
+kubectl describe pod pod           # Show detailed pod info and events
+kubectl logs pod                   # Show logs for a pod
+kubectl logs pod -c container      # Show logs for a specific container in a pod
+kubectl exec -it pod -- /bin/sh    # Execute a shell inside a container</code></pre>
+<h1 id="linux-terminal">Linux Terminal</h1>
+<pre class="language-sh"><code>Ctrl + a # Move cursor to beginning of line
+Ctrl + e # Move cursor to end of line
+Ctrl + b # Backward one character
+Ctrl + f # Forward one character
+Ctrl + p # Previous history entry
+Ctrl + n # Next history entry
+Ctrl + r # Reverse history search
+Ctrl + g # Abort search / cancel
+Ctrl + u # Kill to beginning of line
+Ctrl + k # Kill to end of line
+Ctrl + w # Kill previous word
+Ctrl + y # Yank (paste)
+Ctrl + d # Delete char under cursor / EOF if empty line
+Ctrl + l # Clear screen
+Ctrl + c # Interrupt (SIGINT)
+Ctrl + z # Suspend (SIGTSTP)
+Ctrl + t # Transpose characters
+Ctrl + _ # Undo
+
+Alt + b  # Backward one word
+Alt + f  # Forward one word
+Alt + d  # Kill next word
+
+Alt + u  # Uppercase word
+Alt + l  # Lowercase word
+Alt + c  # Capitalize word
+
+Alt + .  # Insert last argument of previous command
+Alt + y  # Rotate kill ring (after Ctrl+y)
+Alt + t  # Transpose words</code></pre>
+</body>
+</html>
