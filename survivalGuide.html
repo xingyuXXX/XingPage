@@ -103,72 +103,226 @@ Keyboardist</a></li>
 <li><a href="#k8s" id="toc-k8s">K8s</a></li>
 <li><a href="#linux-terminal" id="toc-linux-terminal">Linux
 Terminal</a></li>
+<li><a href="#diskpart-cmd" id="toc-diskpart-cmd">Diskpart &amp;
+CMD</a></li>
 </ul>
 </nav>
 <h1 id="survival-guide-for-keyboardist">Survival Guide for
 Keyboardist</h1>
-<p><link rel="icon" href="./favicon-flash.ico" type="image/x-icon"></p>
+<p><link rel="icon" href="../FavIcons/favicon-flash.ico" type="image/x-icon"></p>
 <h1 id="pacman">pacman</h1>
-<pre class="language-sh"><code>sudo pacman -Syu     # Sync package databases and upgrade all packages (full system upgrade)
-sudo pacman -Syyu    # Force refresh all package databases and do full upgrade (heavier)
+<pre class="language-sh"><code>sudo pacman -Syu       # Sync package databases and upgrade all packages (full system upgrade)
+sudo pacman -Syyu      # Force refresh all package databases and do full upgrade (heavier)
 
-sudo pacman -S pkg   # Install a package
-sudo pacman -U pkg   # Install a local package file
+sudo pacman -S &lt;pkg&gt;   # Install a package
+sudo pacman -U &lt;pkg&gt;   # Install a local package file
 
-sudo pacman -Rns pkg # Remove a package, its unused dependencies, and its config files
+sudo pacman -Rns &lt;pkg&gt; # Remove a package, its unused dependencies, and its config files
 
-pacman -Ss keyword   # Search packages in sync databases (remote repos)
-pacman -Si pkg       # Show detailed info about a remote package
+pacman -Ss &lt;keyword&gt;   # Search packages in sync databases (remote repos)
+pacman -Si &lt;pkg&gt;       # Show detailed info about a remote package
 
-pacman -Qs keyword   # Search installed packages (local database)
-pacman -Qi pkg       # Show detailed info about an installed package
-pacman -Qe           # List explicitly installed packages
-pacman -Qm           # List &quot;foreign&quot; packages (not from official repos; often AUR/manual)
-pacman -Qdtq         # List orphaned dependencies quietly</code></pre>
+pacman -Qs &lt;keyword&gt;   # Search installed packages (local database)
+pacman -Qi &lt;pkg&gt;       # Show detailed info about an installed package
+pacman -Qe             # List explicitly installed packages
+pacman -Qm             # List &quot;foreign&quot; packages (not from official repos; often AUR/manual)
+pacman -Qdtq           # List orphaned dependencies quietly</code></pre>
 <h1 id="k8s">K8s</h1>
-<pre class="language-sh"><code>kubectl cluster-info               # Display cluster information
-kubectl config get-contexts        # List all kubeconfig contexts
-kubectl config use-context context # Switch current context
-kubectl get nodes                  # List all nodes in the cluster
-kubectl describe node node         # Show detailed information about a node
-kubectl get ns                     # List all namespaces
-kubectl create ns namespace        # Create a namespace
-kubectl get pods -n namespace      # List pods in a specific namespace
-kubectl get pods -o wide           # List pods with node and IP info
-kubectl describe pod pod           # Show detailed pod info and events
-kubectl logs pod                   # Show logs for a pod
-kubectl logs pod -c container      # Show logs for a specific container in a pod
-kubectl exec -it pod -- /bin/sh    # Execute a shell inside a container</code></pre>
+<pre class="language-sh"><code>kubectl &lt;verb&gt; &lt;resource&gt; [name] [flags]</code></pre>
+<p><strong>Verbs</strong>:</p>
+<div class="block-pair">
+<div class="block-pair-item">
+<pre class="language-sh"><code>get      # List resources
+describe # Detailed status + events (debug)
+logs     # Container logs
+top      # Resource usage (metrics-server)</code></pre>
+<p><br></p>
+<pre class="language-sh"><code>exec         # Run command in container
+cp           # Copy files
+port-forward # Local port forwarding</code></pre>
+</div>
+<div class="block-pair-item">
+<pre class="language-sh"><code>apply   # Declarative apply (most important)
+create  # Create once
+delete  # Delete resource
+edit    # Edit live object
+patch   # Partial update
+scale   # Scale replicas
+rollout # Rollout control (deploy/sts)</code></pre>
+</div>
+</div>
+<p><strong>Generic Flags</strong> (applied to all verbs):</p>
+<pre class="language-sh"><code>-n &lt;ns&gt;        # Namespace
+-A             # All namespaces
+-o wide        # Extended columns
+-o yaml        # Full YAML
+-o json        # JSON output
+--watch        # Watch changes
+--selector     # Label selector</code></pre>
+<p><strong>Verb-Specific Flags</strong>:</p>
+<div class="block-pair">
+<div class="block-pair-item">
+<pre class="language-sh"><code># apply
+-f &lt;file&gt; # File to apply
+--dry-run # Don&#39;t make changes
+--prune   # Remove resources that no longer match</code></pre>
+<p><br></p>
+<pre class="language-sh"><code># exec
+-c &lt;container&gt;
+-i             # Keep stdin open
+-t             # Allocate TTY</code></pre>
+</div>
+<div class="block-pair-item">
+<pre class="language-sh"><code># create
+-f &lt;file&gt;        # Create from file
+--dry-run=client # Simulate create
+--save-config    # Save config in annotation</code></pre>
+<p><br></p>
+<pre class="language-sh"><code># logs
+-c &lt;container&gt; # log specific container
+-f             # Follow logs
+--previous     # Previous container instance</code></pre>
+</div>
+</div>
+<p><strong>Resources</strong>:</p>
+<pre class="language-sh"><code>kubectl api-resources # List all resources</code></pre>
+<div class="block-pair">
+<div class="block-pair-item">
+<pre class="language-sh"><code># workload
+pod         # po
+replicaset  # rs
+deployment  # deploy
+statefulset # sts
+daemonset   # ds
+job
+cronjob     # cj</code></pre>
+<p><br></p>
+<pre class="language-sh"><code>configmap # cm
+secret</code></pre>
+<p><br></p>
+<pre class="language-sh"><code># Namespace &amp; RBAC
+namespace      # ns
+serviceaccount # sa
+role
+rolebinding
+clusterrole
+clusterrolebinding</code></pre>
+<p><br></p>
+<pre class="language-sh"><code># Autoscaling
+horizontalpodautoscaler # hpa</code></pre>
+</div>
+<div class="block-pair-item">
+<pre class="language-sh"><code># Service &amp; Networking
+service       # svc
+endpoints     # ep
+ingress
+ingressclass
+networkpolicy # netpol</code></pre>
+<p><br></p>
+<pre class="language-sh"><code># Storage
+persistentvolume      # pv
+persistentvolumeclaim # pvc
+storageclass          # sc
+volumeattachment
+csidriver
+csinode</code></pre>
+<p><br></p>
+<pre class="language-sh"><code># Node &amp; Cluster
+node            # no
+event
+componentstatus # cs, deprecated</code></pre>
+<p><br></p>
+<pre class="language-sh"><code># CR
+customresourcedefinition # crd</code></pre>
+</div>
+</div>
 <h1 id="linux-terminal">Linux Terminal</h1>
-<pre class="language-sh"><code>Ctrl + a # Move cursor to beginning of line
-Ctrl + e # Move cursor to end of line
-Ctrl + b # Backward one character
-Ctrl + f # Forward one character
-Ctrl + p # Previous history entry
-Ctrl + n # Next history entry
-Ctrl + r # Reverse history search
-Ctrl + g # Abort search / cancel
-Ctrl + u # Kill to beginning of line
-Ctrl + k # Kill to end of line
-Ctrl + w # Kill previous word
-Ctrl + y # Yank (paste)
-Ctrl + d # Delete char under cursor / EOF if empty line
-Ctrl + l # Clear screen
-Ctrl + c # Interrupt (SIGINT)
-Ctrl + z # Suspend (SIGTSTP)
-Ctrl + t # Transpose characters
-Ctrl + _ # Undo
+<div class="block-pair">
+<div class="block-pair-item">
+<pre class="language-sh"><code>ctrl+a # Move cursor to beginning of line
+ctrl+e # Move cursor to end of line</code></pre>
+<p><br></p>
+<pre class="language-sh"><code>ctrl+p # Previous history entry
+ctrl+n # Next history entry
+ctrl+r # Reverse history search
+ctrl+s # Forward history search
+ctrl+g # Abort operation</code></pre>
+<p><br></p>
+<pre class="language-sh"><code>ctrl+l  # Clear screen
+ctrl+c  # Interrupt (SIGINT)
+ctrl+z  # Suspend (SIGTSTP)
+ctrl+_  # Undo
+#ctrl+t # Transpose characters</code></pre>
+</div>
+<div class="block-pair-item">
+<pre class="language-sh"><code>ctrl+b # Backward one character
+ctrl+f # Forward one character
+alt+b  # Backward one word
+alt+f  # Forward one word</code></pre>
+<p><br></p>
+<pre class="language-sh"><code>ctrl+u  # Kill to beginning of line
+ctrl+k  # Kill to end of line
+ctrl+w  # Kill previous word
+alt+d   # Kill next word
+ctrl+d  # Delete char under cursor (EOF if empty line)
+ctrl+h  # Delete previous char (backspace)
+#ctrl+y # Yank (paste)</code></pre>
+<p><br></p>
+<pre class="language-sh"><code># alt+u # Uppercase word
+# alt+l # Lowercase word
+# alt+c # Capitalize word
+# alt+. # Insert last argument of previous command
+# alt+y # Rotate kill ring (after Ctrl+y)
+# alt+t # Transpose words</code></pre>
+</div>
+</div>
+<h1 id="diskpart-cmd">Diskpart &amp; CMD</h1>
+<pre class="language-sh"><code># in cmd
+diskpart          # Enter DiskPart environment (low-level disk tool)
+dir               # cmd ls
+cd                # cmd pwd
+cd &lt;path&gt;         # cmd cd
+mkdir             # cmd mkdir
+del               # cmd rm
+rmdir /s &lt;dir&gt;    # cmd rm -r
+copy              # cmd cp
+xcopy             # cmd cp -r
+move              # cmd mv
+bcdboot C:\Windows /s S:</code></pre>
+<div class="block-pair">
+<div class="block-pair-item">
+<pre class="language-sh"><code># in diskpart
+list disk
+list volume
 
-Alt + b  # Backward one word
-Alt + f  # Forward one word
-Alt + d  # Kill next word
+select disk &lt;disk_no&gt;
+select volume &lt;vol_no&gt;
 
-Alt + u  # Uppercase word
-Alt + l  # Lowercase word
-Alt + c  # Capitalize word
-
-Alt + .  # Insert last argument of previous command
-Alt + y  # Rotate kill ring (after Ctrl+y)
-Alt + t  # Transpose words</code></pre>
+exit</code></pre>
+<p><br></p>
+<pre class="language-sh"><code># under selected volume
+detail volume        # Show volume details
+format fs=ntfs quick # Format volume (same as partition)
+assign letter=S      # Assign drive letter
+remove letter=S      # Remove drive letter
+delete volume        # Delete volume</code></pre>
+</div>
+<div class="block-pair-item">
+<pre class="language-sh"><code># under selected disk
+detail disk                   # Show details
+clean                         # Clear partition table
+convert gpt                   # Convert to GPT
+create partition efi size=100 # EFI (fat32, 100MB)
+create partition msr size=16  # MSR (microsoft-specific, no format, no mount)
+create partition primary      # primary partition (ntfs)
+select partition &lt;part_no&gt;</code></pre>
+<p><br></p>
+<pre class="language-sh"><code># under selected partition
+detail partition      # Show partition details
+format fs=fat32 quick # Format as fat32
+delete partition
+delete partition override # Force delete protected partition</code></pre>
+</div>
+</div>
 </body>
 </html>
