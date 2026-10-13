@@ -2,825 +2,754 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vim Cheat Sheet</title>
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
     <link rel="icon" href="./favicon-vim.ico" type="image/x-icon" />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
   </head>
-
   <body>
-    <div id="main-container">
-      <div class="section">
-        <h2 class="title">Vim</h2>
-        <div class="table-container">
-          <table>
-            <tbody>
-              <tr class="separator desc">
-                <td colspan="2">Navigation</td>
-              </tr>
-              <tr class="type-normal">
-                <td>
-                  <code>h</code> (<code>⌫</code>) <code>l</code> <br />
-                  <code>j</code> (<code>↩︎</code>) <code>k</code>
-                </td>
-                <td>
-                  left/right <br />
-                  down/up
-                </td>
-              </tr>
-              <tr class="type-normal">
-                <td><code>^b</code> <code>^f</code></td>
-                <td>one page backward/forward</td>
-              </tr>
-              <tr class="type-normal">
-                <td><code>^u</code> <code>^d</code></td>
-                <td>half page up/down</td>
-              </tr>
-              <tr class="type-normal unused">
-                <td><code>12j</code></td>
-                <td>down 12 lines</td>
-              </tr>
-              <tr class="type-normal unused">
-                <td>
-                  <code>zt</code> <code>zz</code> <br />
-                  <code>zb</code>
-                </td>
-                <td>top/center/bottom this line</td>
-              </tr>
-
-              <tr class="separator">
-                <td colspan="2"></td>
-              </tr>
-              <tr class="type-normal">
-                <td><code>w</code> <code class="unused">W</code></td>
-                <td>next word/WORD</td>
-              </tr>
-              <tr class="type-normal">
-                <td><code>b</code> <code class="unused">B</code></td>
-                <td>begin of word/WORD</td>
-              </tr>
-              <tr class="type-normal">
-                <td><code>e</code> <code class="unused">E</code></td>
-                <td>end of word/WORD</td>
-              </tr>
-              <tr class="type-normal unused">
-                <td><code>ge</code> <code>gE</code></td>
-                <td>go end of prev word/WORD</td>
-              </tr>
-
-              <tr class="separator">
-                <td colspan="2"></td>
-              </tr>
-              <tr class="type-normal">
-                <td><code>0</code> <code>$</code></td>
-                <td>start/end of line</td>
-              </tr>
-              <tr class="type-normal unused">
-                <td><code>^</code> <code>g_</code></td>
-                <td>first/last non-blank character of line</td>
-              </tr>
-
-              <tr class="separator">
-                <td colspan="2"></td>
-              </tr>
-              <tr class="type-normal">
-                <td><code>(</code> <code>)</code></td>
-                <td>prev/next sentence</td>
-              </tr>
-              <tr class="type-normal unused">
-                <td><code>{</code> <code>}</code></td>
-                <td>prev/next paragraph</td>
-              </tr>
-
-              <tr class="separator">
-                <td colspan="2"></td>
-              </tr>
-              <tr class="type-normal">
-                <td><code>gg</code> <code>G</code></td>
-                <td>first/last line of file</td>
-              </tr>
-              <tr class="type-normal">
-                <td><code>12gg</code></td>
-                <td>
-                  go to line 12 <br />
-                  = <code>12G</code>
-                </td>
-              </tr>
-
-              <tr class="separator">
-                <td colspan="2"></td>
-              </tr>
-              <tr class="type-normal">
-                <td><code>%</code></td>
-                <td>jump to matching bracket</td>
-              </tr>
-
-              <tr class="separator desc">
-                <td colspan="2">Search</td>
-              </tr>
-              <tr class="type-normal">
-                <td>
-                  <code>f{char}</code> <br />
-                  <code>F{char}</code>
-                </td>
-                <td>find next char forward/backward</td>
-              </tr>
-              <tr class="type-normal unused">
-                <td>
-                  <code>t{char}</code> <br />
-                  <code>T{char}</code>
-                </td>
-                <td>til (until) next char forward/backward</td>
-              </tr>
-              <tr class="type-normal">
-                <td><code>;</code> <code class="unused">,</code></td>
-                <td>repeat find in same/opposite direction</td>
-              </tr>
-              <tr class="type-normal">
-                <td>
-                  <code>/{regx}</code> <br />
-                  <code>?{regx}</code>
-                </td>
-                <td>search regx forward/backward</td>
-              </tr>
-              <tr class="type-visual">
-                <td><code>*</code> <code>#</code></td>
-                <td>search selection forward/backward</td>
-              </tr>
-              <tr class="type-normal">
-                <td><code>n</code> <code>N</code></td>
-                <td>repeat search in same/opposite direction</td>
-              </tr>
-
-              <tr class="separator desc">
-                <td colspan="2">Mark</td>
-              </tr>
-              <tr class="type-normal unused">
-                <td><code>m{a-zA-Z}</code></td>
-                <td>mark position as {a-zA-Z}<br />uppercase marks are global</td>
-              </tr>
-              <tr class="type-normal unused">
-                <td><code>`{mark}</code></td>
-                <td>jump to line and column of mark</td>
-              </tr>
-              <tr class="type-normal unused">
-                <td><code>'{mark}</code></td>
-                <td>jump to line of mark</td>
-              </tr>
-
-              <tr class="separator">
-                <td colspan="2"></td>
-              </tr>
-              <tr class="type-normal">
-                <td><code>^o</code> <code>^i</code></td>
-                <td>jump back/forward from jump list</td>
-              </tr>
-
-              <tr class="separator desc">
-                <td colspan="2">Edit</td>
-              </tr>
-              <tr class="type-normal">
-                <td><code>i</code> <code>a</code></td>
-                <td>insert/append in cursor</td>
-              </tr>
-              <tr class="type-normal">
-                <td><code>I</code> <code>A</code></td>
-                <td>insert/append in line</td>
-              </tr>
-              <tr class="type-normal">
-                <td><code>o</code> <code>O</code></td>
-                <td>open a new line below/above</td>
-              </tr>
-              <tr class="type-normal">
-                <td><code>J</code></td>
-                <td>join line below</td>
-              </tr>
-
-              <tr class="separator">
-                <td colspan="2"></td>
-              </tr>
-              <tr class="type-normal">
-                <td><code>gcc</code></td>
-                <td>toggle comment</td>
-              </tr>
-              <tr class="type-visual">
-                <td><code>gc</code></td>
-                <td>toggle comment</td>
-              </tr>
-              <tr class="type-visual">
-                <td><code>u</code> <code>U</code></td>
-                <td>lowercase/uppercase</td>
-              </tr>
-
-              <tr class="separator">
-                <td colspan="2"></td>
-              </tr>
-              <tr class="type-normal">
-                <td><code>x</code> <code class="unused">X</code></td>
-                <td>delete char before/after</td>
-              </tr>
-              <tr class="type-normal unused">
-                <td><code>s</code> <code>S</code></td>
-                <td>change char/line</td>
-              </tr>
-              <tr class="type-normal">
-                <td><code>r</code> <code class="unused">R</code></td>
-                <td>replace character/mode</td>
-              </tr>
-              <tr class="type-normal unused">
-                <td><code>C</code></td>
-                <td>change to end of line</td>
-              </tr>
-              <tr class="type-normal">
-                <td><code>dd</code></td>
-                <td>delete line</td>
-              </tr>
-              <tr class="type-normal">
-                <td><code>D</code></td>
-                <td>delete to end of line</td>
-              </tr>
-              <tr class="type-normal">
-                <td><code>yy</code> or <code>Y</code></td>
-                <td>yank line</td>
-              </tr>
-              <tr class="type-normal">
-                <td><code>cc</code> or <code>S</code></td>
-                <td>delete the line and insert</td>
-              </tr>
-              <tr class="type-insert">
-                <td><code>^h</code> <code>^w</code> <code>^u</code></td>
-                <td>delete back one char/word/line</td>
-              </tr>
-
-              <tr class="separator">
-                <td colspan="2"></td>
-              </tr>
-              <tr class="type-normal">
-                <td><code>p</code> <code>P</code></td>
-                <td>put after/before cursor</td>
-              </tr>
-              <tr class="type-normal unused">
-                <td><code>]p</code></td>
-                <td>put after cursor with indent</td>
-              </tr>
-              <tr class="type-normal unused">
-                <td><code>"+p</code> <code>"+y</code></td>
-                <td>put from/to system clipboard</td>
-              </tr>
-              <tr class="type-insert">
-                <td><code>^r{reg}</code></td>
-                <td>put from register</td>
-              </tr>
-
-              <tr class="separator">
-                <td colspan="2"></td>
-              </tr>
-              <tr class="type-normal type-visual">
-                <td><code>^a</code> <code>^x</code></td>
-                <td>add/subtract a number</td>
-              </tr>
-
-              <tr class="separator desc">
-                <td colspan="2">Indent</td>
-              </tr>
-              <tr class="type-normal">
-                <td><code>&gt;&gt;</code> <code>&lt;&lt;</code></td>
-                <td>indent/de-indent</td>
-              </tr>
-              <tr class="type-normal">
-                <td><code>&gt;%</code> <code>&lt;%</code></td>
-                <td>indent/de-indent block</td>
-              </tr>
-              <tr class="type-insert">
-                <td><code>^t</code> <code>^d</code></td>
-                <td>indent/de-indent</td>
-              </tr>
-
-              <tr class="separator desc">
-                <td colspan="2">Spell</td>
-              </tr>
-              <tr class="type-normal">
-                <td><code>z=</code></td>
-                <td>spell suggest</td>
-              </tr>
-              <tr class="type-normal">
-                <td><code>zg</code> <code>zw</code></td>
-                <td>mark word as good/wrong</td>
-              </tr>
-              <tr class="type-normal unused">
-                <td><code>zug</code> <code>zuw</code></td>
-                <td>undo good/wrong</td>
-              </tr>
-              <tr class="type-normal">
-                <td><code>]s</code> <code>[s</code></td>
-                <td>jump to next/prev misspelled word</td>
-              </tr>
-
-              <tr class="separator desc">
-                <td colspan="2">Window &amp; Buffer &amp; Tab</td>
-              </tr>
-              <tr class="type-normal unused">
-                <td>
-                  <code>^w h</code> <code>^w j</code> <br />
-                  <code>^w k</code> <code>^w l</code>
-                </td>
-                <td>
-                  focus left/lower/upper/right window
-                  <a href="#anchor-window-focus"><i class="fa-regular fa-circle-up"></i></a>
-                </td>
-              </tr>
-              <tr class="type-normal">
-                <td><code>^w w</code></td>
-                <td>switch window</td>
-              </tr>
-              <tr class="type-normal unused">
-                <td><code>^w v</code> <code>^w s</code></td>
-                <td>split vertically/horizontally</td>
-              </tr>
-              <tr class="type-normal unused">
-                <td><code>^w c</code></td>
-                <td>close window (not close buffer)</td>
-              </tr>
-              <tr class="type-normal">
-                <td><code>^w o</code></td>
-                <td>close other window</td>
-              </tr>
-              <tr class="type-normal unused">
-                <td><code>^w q</code></td>
-                <td>quit window (close buffer)</td>
-              </tr>
-
-              <tr class="separator">
-                <td colspan="2"></td>
-              </tr>
-              <tr class="type-last unused">
-                <td>
-                  <code>:bnext</code> <br />
-                  <code>:bprev</code>
-                </td>
-                <td>
-                  next/prev buffer
-                  <a href="#anchor-switch-buffer"><i class="fa-regular fa-circle-up"></i></a>
-                </td>
-              </tr>
-
-              <tr class="separator">
-                <td colspan="2"></td>
-              </tr>
-              <tr class="type-normal">
-                <td><code>gt</code> <code>gT</code></td>
-                <td>next/prev tab</td>
-              </tr>
-
-              <tr class="separator desc">
-                <td colspan="2">Open &amp; Exit</td>
-              </tr>
-              <tr class="type-last">
-                <td><code>:e</code></td>
-                <td><code>:edit</code> file (open)</td>
-              </tr>
-              <tr class="type-last">
-                <td><code>:w</code></td>
-                <td><code>:write</code> file (save)</td>
-              </tr>
-              <tr class="type-last">
-                <td><code>:q</code></td>
-                <td><code>:quit</code></td>
-              </tr>
-              <tr class="type-last">
-                <td><code>:q!</code></td>
-                <td>
-                  quit without saving<br />
-                  = <code>ZQ</code>
-                </td>
-              </tr>
-              <tr class="type-last">
-                <td><code>:wq</code></td>
-                <td>write and quit</td>
-              </tr>
-              <tr class="type-last">
-                <td><code>:qa</code></td>
-                <td>
-                  = <code>:quitall</code>
-                  <a href="#anchor-lqq"><i class="fa-regular fa-circle-up"></i></a>
-                </td>
-              </tr>
-              <tr class="type-last unused">
-                <td><code>:x</code></td>
-                <td>
-                  write (if changes) and quit <br />
-                  = <code>:exit</code> = <code>ZZ</code>
-                </td>
-              </tr>
-              <tr class="type-last unused">
-                <td><code>:e!</code></td>
-                <td>revert changes</td>
-              </tr>
-
-              <tr class="separator desc">
-                <td colspan="2">Operator</td>
-              </tr>
-              <tr class="type-operator type-visual">
-                <td><code>d</code></td>
-                <td>delete (cut)</td>
-              </tr>
-              <tr class="type-operator type-visual">
-                <td><code>y</code></td>
-                <td>yank (copy)</td>
-              </tr>
-              <tr class="type-operator type-visual">
-                <td><code>c</code></td>
-                <td>change (delete then insert)</td>
-              </tr>
-              <tr class="type-operator type-visual unused">
-                <td><code>g~</code></td>
-                <td>toggle case</td>
-              </tr>
-              <tr class="type-operator unused type-visual">
-                <td><code>gu</code> <code>gU</code></td>
-                <td>lowercase/uppercase</td>
-              </tr>
-              <tr class="type-operator type-visual">
-                <td><code>=</code></td>
-                <td>auto-indent</td>
-              </tr>
-              <tr class="type-operator type-visual">
-                <td><code>&gt;</code> <code>&lt;</code></td>
-                <td>shift right/left</td>
-              </tr>
-              <tr class="type-operator unused type-visual">
-                <td><code>!</code></td>
-                <td>filter through external command</td>
-              </tr>
-              <tr class="type-operator unused type-visual">
-                <td><code>gq</code></td>
-                <td>format text</td>
-              </tr>
-
-              <tr class="separator desc">
-                <td colspan="2">Diff</td>
-              </tr>
-              <tr class="type-normal">
-                <td><code>]c</code> <code>[c</code></td>
-                <td>next/prev change</td>
-              </tr>
-              <tr class="type-normal">
-                <td><code>do</code> <code>dp</code></td>
-                <td>diff obtain (get diff from other window)<br />diff put (put diff to other window)</td>
-              </tr>
-              <tr class="type-last">
-                <td><code>:diffupdate</code></td>
-                <td>update diff manually</td>
-              </tr>
-
-              <tr class="separator desc">
-                <td colspan="2">MISC</td>
-              </tr>
-              <tr class="type-normal">
-                <td><code>u</code> <code>U</code></td>
-                <td>undo last change/line</td>
-              </tr>
-              <tr class="type-normal">
-                <td><code>^r</code></td>
-                <td>redo</td>
-              </tr>
-              <tr class="type-normal">
-                <td><code>.</code></td>
-                <td>repeat last command</td>
-              </tr>
-
-              <tr class="separator">
-                <td colspan="2"></td>
-              </tr>
-              <tr class="type-insert">
-                <td><code>^o{cmd}</code></td>
-                <td>enter normal mode for one cmd</td>
-              </tr>
-
-              <tr class="separator">
-                <td colspan="2"></td>
-              </tr>
-              <tr class="type-normal">
-                <td><code>q:</code></td>
-                <td>
-                  open command-line window <br />
-                  <code>^c</code> to close
-                </td>
-              </tr>
-
-              <tr class="separator">
-                <td colspan="2"></td>
-              </tr>
-              <tr class="type-normal">
-                <td><code>zo</code> <code>zc</code></td>
-                <td>open/close fold</td>
-              </tr>
-
-              <tr class="separator">
-                <td colspan="2"></td>
-              </tr>
-              <tr class="type-last">
-                <td><code>:Ex</code></td>
-                <td>open netrw (explorer)</td>
-              </tr>
-              <tr class="type-last">
-                <td><code>:Vex</code></td>
-                <td>open netrw vertically</td>
-              </tr>
-              <tr class="type-last">
-                <td><code>:Ex!</code></td>
-                <td>open netrw and force to CWD</td>
-              </tr>
-            </tbody>
-          </table>
+    <main class="container-fluid p-3 p-lg-4">
+      <header class="mb-4 text-center">
+        <h1 class="h2 mb-3">Vim Cheat Sheet</h1>
+        <div class="d-flex flex-wrap justify-content-center gap-2 my-2" aria-label="Mode colors">
+          <span class="badge bg-success-subtle text-success-emphasis">Normal Mode</span>
+          <span class="badge bg-danger-subtle text-danger-emphasis">Visual Mode</span>
+          <span class="badge bg-warning-subtle text-warning-emphasis">Insert Mode</span>
+          <span class="badge bg-secondary-subtle text-secondary-emphasis">Command Mode</span>
+          <span class="badge bg-primary-subtle text-primary-emphasis">Operator</span>
         </div>
-      </div>
+        <p class="small text-body-secondary mb-0">Muted commands are marked unused. Two cell colors indicate commands available in multiple modes.</p>
+      </header>
 
-      <div class="section">
-        <h2 class="title">Netrw</h2>
-        <div class="table-container">
-          <table>
-            <tbody>
-              <tr class="type-normal">
-                <td>
-                  <code>↩︎</code>
-                </td>
-                <td>enter the directory or read the file</td>
-              </tr>
-              <tr class="type-normal">
-                <td>
-                  <code>D</code>
-                </td>
-                <td>delete the file</td>
-              </tr>
-              <tr class="type-normal">
-                <td>
-                  <code>^l</code>
-                </td>
-                <td>refresh</td>
-              </tr>
-              <tr class="type-normal">
-                <td>
-                  <code>d</code>
-                </td>
-                <td>make directory</td>
-              </tr>
-              <tr class="type-normal">
-                <td>
-                  <code>i</code>
-                </td>
-                <td>cycle thin, long, tree listings</td>
-              </tr>
-              <tr class="type-normal">
-                <td>
-                  <code>p</code>
-                </td>
-                <td>preview</td>
-              </tr>
-              <tr class="type-normal">
-                <td>
-                  <code>^w z</code>
-                </td>
-                <td>close preview</td>
-              </tr>
-              <tr class="type-normal">
-                <td>
-                  <code>r</code>
-                </td>
-                <td>reverse sort order</td>
-              </tr>
-              <tr class="type-normal">
-                <td>
-                  <code>s</code>
-                </td>
-                <td>cycle by name, time, size sorting</td>
-              </tr>
-              <tr class="type-normal">
-                <td>
-                  <code>t</code>
-                </td>
-                <td>open in a new tab</td>
-              </tr>
-              <tr class="type-normal">
-                <td><code>o</code> <code>v</code></td>
-                <td>open in a horizontal/vertical split</td>
-              </tr>
-            </tbody>
-          </table>
+      <section id="section-vim" class="mb-5" aria-labelledby="heading-vim">
+        <h2 id="heading-vim" class="h3 text-primary text-center border-bottom pb-2 mb-3">Vim</h2>
+        <div class="row g-3" data-command-columns>
+          <div class="col">
+            <table class="table table-sm border-light-subtle mb-0">
+              <caption class="visually-hidden">
+                Vim commands
+              </caption>
+              <thead class="visually-hidden">
+                <tr>
+                  <th scope="col">Command</th>
+                  <th scope="col">Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="table-light">
+                  <th colspan="2" class="py-2 text-danger-emphasis bg-transparent">Navigation</th>
+                </tr>
+                <tr class="table-success">
+                  <td class="align-middle">
+                    <kbd class="text-nowrap">h</kbd> (<kbd class="text-nowrap">⌫</kbd>) <kbd class="text-nowrap">l</kbd> <br />
+                    <kbd class="text-nowrap">j</kbd> (<kbd class="text-nowrap">↩︎</kbd>) <kbd class="text-nowrap">k</kbd>
+                  </td>
+                  <td class="align-middle text-end">
+                    left/right <br />
+                    down/up
+                  </td>
+                </tr>
+                <tr class="table-success">
+                  <td class="align-middle"><kbd class="text-nowrap">^b</kbd> <kbd class="text-nowrap">^f</kbd></td>
+                  <td class="align-middle text-end">one page backward/forward</td>
+                </tr>
+                <tr class="table-success">
+                  <td class="align-middle"><kbd class="text-nowrap">^u</kbd> <kbd class="text-nowrap">^d</kbd></td>
+                  <td class="align-middle text-end">half page up/down</td>
+                </tr>
+                <tr class="table-success">
+                  <td class="align-middle text-secondary"><kbd class="bg-secondary text-nowrap">12j</kbd></td>
+                  <td class="align-middle text-secondary text-end">down 12 lines</td>
+                </tr>
+                <tr class="table-success">
+                  <td class="align-middle text-secondary">
+                    <kbd class="bg-secondary text-nowrap">zt</kbd> <kbd class="bg-secondary text-nowrap">zz</kbd> <br />
+                    <kbd class="bg-secondary text-nowrap">zb</kbd>
+                  </td>
+                  <td class="align-middle text-secondary text-end">top/center/bottom this line</td>
+                </tr>
+                <tr class="table-success">
+                  <td class="align-middle"><kbd class="text-nowrap">w</kbd> <kbd class="bg-secondary text-nowrap">W</kbd></td>
+                  <td class="align-middle text-end">next word/WORD</td>
+                </tr>
+                <tr class="table-success">
+                  <td class="align-middle"><kbd class="text-nowrap">b</kbd> <kbd class="bg-secondary text-nowrap">B</kbd></td>
+                  <td class="align-middle text-end">begin of word/WORD</td>
+                </tr>
+                <tr class="table-success">
+                  <td class="align-middle"><kbd class="text-nowrap">e</kbd> <kbd class="bg-secondary text-nowrap">E</kbd></td>
+                  <td class="align-middle text-end">end of word/WORD</td>
+                </tr>
+                <tr class="table-success">
+                  <td class="align-middle text-secondary"><kbd class="bg-secondary text-nowrap">ge</kbd> <kbd class="bg-secondary text-nowrap">gE</kbd></td>
+                  <td class="align-middle text-secondary text-end">go end of prev word/WORD</td>
+                </tr>
+                <tr class="table-success">
+                  <td class="align-middle"><kbd class="text-nowrap">0</kbd> <kbd class="text-nowrap">$</kbd></td>
+                  <td class="align-middle text-end">start/end of line</td>
+                </tr>
+                <tr class="table-success">
+                  <td class="align-middle text-secondary"><kbd class="bg-secondary text-nowrap">^</kbd> <kbd class="bg-secondary text-nowrap">g_</kbd></td>
+                  <td class="align-middle text-secondary text-end">first/last non-blank character of line</td>
+                </tr>
+                <tr class="table-success">
+                  <td class="align-middle"><kbd class="text-nowrap">(</kbd> <kbd class="text-nowrap">)</kbd></td>
+                  <td class="align-middle text-end">prev/next sentence</td>
+                </tr>
+                <tr class="table-success">
+                  <td class="align-middle text-secondary"><kbd class="bg-secondary text-nowrap">{</kbd> <kbd class="bg-secondary text-nowrap">}</kbd></td>
+                  <td class="align-middle text-secondary text-end">prev/next paragraph</td>
+                </tr>
+                <tr class="table-success">
+                  <td class="align-middle"><kbd class="text-nowrap">gg</kbd> <kbd class="text-nowrap">G</kbd></td>
+                  <td class="align-middle text-end">first/last line of file</td>
+                </tr>
+                <tr class="table-success">
+                  <td class="align-middle"><kbd class="text-nowrap">12gg</kbd></td>
+                  <td class="align-middle text-end">
+                    go to line 12 <br />
+                    = <kbd class="text-nowrap">12G</kbd>
+                  </td>
+                </tr>
+                <tr class="table-success">
+                  <td class="align-middle"><kbd class="text-nowrap">%</kbd></td>
+                  <td class="align-middle text-end">jump to matching bracket</td>
+                </tr>
+                <tr class="table-light">
+                  <th colspan="2" class="py-2 text-danger-emphasis bg-transparent">Search</th>
+                </tr>
+                <tr class="table-success">
+                  <td class="align-middle">
+                    <kbd class="text-nowrap">f{char}</kbd> <br />
+                    <kbd class="text-nowrap">F{char}</kbd>
+                  </td>
+                  <td class="align-middle text-end">find next char forward/backward</td>
+                </tr>
+                <tr class="table-success">
+                  <td class="align-middle text-secondary">
+                    <kbd class="bg-secondary text-nowrap">t{char}</kbd> <br />
+                    <kbd class="bg-secondary text-nowrap">T{char}</kbd>
+                  </td>
+                  <td class="align-middle text-secondary text-end">til (until) next char forward/backward</td>
+                </tr>
+                <tr class="table-success">
+                  <td class="align-middle"><kbd class="text-nowrap">;</kbd> <kbd class="bg-secondary text-nowrap">,</kbd></td>
+                  <td class="align-middle text-end">repeat find in same/opposite direction</td>
+                </tr>
+                <tr class="table-success">
+                  <td class="align-middle">
+                    <kbd class="text-nowrap">/{regx}</kbd> <br />
+                    <kbd class="text-nowrap">?{regx}</kbd>
+                  </td>
+                  <td class="align-middle text-end">search regx forward/backward</td>
+                </tr>
+                <tr class="table-danger">
+                  <td class="align-middle"><kbd class="text-nowrap">*</kbd> <kbd class="text-nowrap">#</kbd></td>
+                  <td class="align-middle text-end">search selection forward/backward</td>
+                </tr>
+                <tr class="table-success">
+                  <td class="align-middle"><kbd class="text-nowrap">n</kbd> <kbd class="text-nowrap">N</kbd></td>
+                  <td class="align-middle text-end">repeat search in same/opposite direction</td>
+                </tr>
+                <tr class="table-light">
+                  <th colspan="2" class="py-2 text-danger-emphasis bg-transparent">Mark</th>
+                </tr>
+                <tr class="table-success">
+                  <td class="align-middle text-secondary"><kbd class="bg-secondary text-nowrap">m{a-zA-Z}</kbd></td>
+                  <td class="align-middle text-secondary text-end">mark position as {a-zA-Z}<br />uppercase marks are global</td>
+                </tr>
+                <tr class="table-success">
+                  <td class="align-middle text-secondary"><kbd class="bg-secondary text-nowrap">`{mark}</kbd></td>
+                  <td class="align-middle text-secondary text-end">jump to line and column of mark</td>
+                </tr>
+                <tr class="table-success">
+                  <td class="align-middle text-secondary"><kbd class="bg-secondary text-nowrap">'{mark}</kbd></td>
+                  <td class="align-middle text-secondary text-end">jump to line of mark</td>
+                </tr>
+                <tr class="table-success">
+                  <td class="align-middle"><kbd class="text-nowrap">^o</kbd> <kbd class="text-nowrap">^i</kbd></td>
+                  <td class="align-middle text-end">jump back/forward from jump list</td>
+                </tr>
+                <tr class="table-light">
+                  <th colspan="2" class="py-2 text-danger-emphasis bg-transparent">Edit</th>
+                </tr>
+                <tr class="table-success">
+                  <td class="align-middle"><kbd class="text-nowrap">i</kbd> <kbd class="text-nowrap">a</kbd></td>
+                  <td class="align-middle text-end">insert/append in cursor</td>
+                </tr>
+                <tr class="table-success">
+                  <td class="align-middle"><kbd class="text-nowrap">I</kbd> <kbd class="text-nowrap">A</kbd></td>
+                  <td class="align-middle text-end">insert/append in line</td>
+                </tr>
+                <tr class="table-success">
+                  <td class="align-middle"><kbd class="text-nowrap">o</kbd> <kbd class="text-nowrap">O</kbd></td>
+                  <td class="align-middle text-end">open a new line below/above</td>
+                </tr>
+                <tr class="table-success">
+                  <td class="align-middle"><kbd class="text-nowrap">J</kbd></td>
+                  <td class="align-middle text-end">join line below</td>
+                </tr>
+                <tr class="table-success">
+                  <td class="align-middle"><kbd class="text-nowrap">gcc</kbd></td>
+                  <td class="align-middle text-end">toggle comment</td>
+                </tr>
+                <tr class="table-danger">
+                  <td class="align-middle"><kbd class="text-nowrap">gc</kbd></td>
+                  <td class="align-middle text-end">toggle comment</td>
+                </tr>
+                <tr class="table-danger">
+                  <td class="align-middle"><kbd class="text-nowrap">u</kbd> <kbd class="text-nowrap">U</kbd></td>
+                  <td class="align-middle text-end">lowercase/uppercase</td>
+                </tr>
+                <tr class="table-success">
+                  <td class="align-middle"><kbd class="text-nowrap">x</kbd> <kbd class="bg-secondary text-nowrap">X</kbd></td>
+                  <td class="align-middle text-end">delete char before/after</td>
+                </tr>
+                <tr class="table-success">
+                  <td class="align-middle text-secondary"><kbd class="bg-secondary text-nowrap">s</kbd> <kbd class="bg-secondary text-nowrap">S</kbd></td>
+                  <td class="align-middle text-secondary text-end">change char/line</td>
+                </tr>
+                <tr class="table-success">
+                  <td class="align-middle"><kbd class="text-nowrap">r</kbd> <kbd class="bg-secondary text-nowrap">R</kbd></td>
+                  <td class="align-middle text-end">replace character/mode</td>
+                </tr>
+                <tr class="table-success">
+                  <td class="align-middle text-secondary"><kbd class="bg-secondary text-nowrap">C</kbd></td>
+                  <td class="align-middle text-secondary text-end">change to end of line</td>
+                </tr>
+                <tr class="table-success">
+                  <td class="align-middle"><kbd class="text-nowrap">dd</kbd></td>
+                  <td class="align-middle text-end">delete line</td>
+                </tr>
+                <tr class="table-success">
+                  <td class="align-middle"><kbd class="text-nowrap">D</kbd></td>
+                  <td class="align-middle text-end">delete to end of line</td>
+                </tr>
+                <tr class="table-success">
+                  <td class="align-middle"><kbd class="text-nowrap">yy</kbd> or <kbd class="text-nowrap">Y</kbd></td>
+                  <td class="align-middle text-end">yank line</td>
+                </tr>
+                <tr class="table-success">
+                  <td class="align-middle"><kbd class="text-nowrap">cc</kbd> or <kbd class="text-nowrap">S</kbd></td>
+                  <td class="align-middle text-end">delete the line and insert</td>
+                </tr>
+                <tr class="table-warning">
+                  <td class="align-middle"><kbd class="text-nowrap">^h</kbd> <kbd class="text-nowrap">^w</kbd> <kbd class="text-nowrap">^u</kbd></td>
+                  <td class="align-middle text-end">delete back one char/word/line</td>
+                </tr>
+                <tr class="table-success">
+                  <td class="align-middle"><kbd class="text-nowrap">p</kbd> <kbd class="text-nowrap">P</kbd></td>
+                  <td class="align-middle text-end">put after/before cursor</td>
+                </tr>
+                <tr class="table-success">
+                  <td class="align-middle text-secondary"><kbd class="bg-secondary text-nowrap">]p</kbd></td>
+                  <td class="align-middle text-secondary text-end">put after cursor with indent</td>
+                </tr>
+                <tr class="table-success">
+                  <td class="align-middle text-secondary"><kbd class="bg-secondary text-nowrap">"+p</kbd> <kbd class="bg-secondary text-nowrap">"+y</kbd></td>
+                  <td class="align-middle text-secondary text-end">put from/to system clipboard</td>
+                </tr>
+                <tr class="table-warning">
+                  <td class="align-middle"><kbd class="text-nowrap">^r{reg}</kbd></td>
+                  <td class="align-middle text-end">put from register</td>
+                </tr>
+                <tr class="table-success">
+                  <td class="align-middle table-success" title="Normal Mode"><kbd class="text-nowrap">^a</kbd> <kbd class="text-nowrap">^x</kbd></td>
+                  <td class="align-middle text-end table-danger" title="Visual Mode">add/subtract a number</td>
+                </tr>
+                <tr class="table-light">
+                  <th colspan="2" class="py-2 text-danger-emphasis bg-transparent">Indent</th>
+                </tr>
+                <tr class="table-success">
+                  <td class="align-middle"><kbd class="text-nowrap">&gt;&gt;</kbd> <kbd class="text-nowrap">&lt;&lt;</kbd></td>
+                  <td class="align-middle text-end">indent/de-indent</td>
+                </tr>
+                <tr class="table-success">
+                  <td class="align-middle"><kbd class="text-nowrap">&gt;%</kbd> <kbd class="text-nowrap">&lt;%</kbd></td>
+                  <td class="align-middle text-end">indent/de-indent block</td>
+                </tr>
+                <tr class="table-warning">
+                  <td class="align-middle"><kbd class="text-nowrap">^t</kbd> <kbd class="text-nowrap">^d</kbd></td>
+                  <td class="align-middle text-end">indent/de-indent</td>
+                </tr>
+                <tr class="table-light">
+                  <th colspan="2" class="py-2 text-danger-emphasis bg-transparent">Spell</th>
+                </tr>
+                <tr class="table-success">
+                  <td class="align-middle"><kbd class="text-nowrap">z=</kbd></td>
+                  <td class="align-middle text-end">spell suggest</td>
+                </tr>
+                <tr class="table-success">
+                  <td class="align-middle"><kbd class="text-nowrap">zg</kbd> <kbd class="text-nowrap">zw</kbd></td>
+                  <td class="align-middle text-end">mark word as good/wrong</td>
+                </tr>
+                <tr class="table-success">
+                  <td class="align-middle text-secondary"><kbd class="bg-secondary text-nowrap">zug</kbd> <kbd class="bg-secondary text-nowrap">zuw</kbd></td>
+                  <td class="align-middle text-secondary text-end">undo good/wrong</td>
+                </tr>
+                <tr class="table-success">
+                  <td class="align-middle"><kbd class="text-nowrap">]s</kbd> <kbd class="text-nowrap">[s</kbd></td>
+                  <td class="align-middle text-end">jump to next/prev misspelled word</td>
+                </tr>
+                <tr class="table-light">
+                  <th colspan="2" class="py-2 text-danger-emphasis bg-transparent">Window &amp; Buffer &amp; Tab</th>
+                </tr>
+                <tr class="table-success">
+                  <td class="align-middle text-secondary">
+                    <kbd class="bg-secondary text-nowrap">^w h</kbd> <kbd class="bg-secondary text-nowrap">^w j</kbd> <br />
+                    <kbd class="bg-secondary text-nowrap">^w k</kbd> <kbd class="bg-secondary text-nowrap">^w l</kbd>
+                  </td>
+                  <td class="align-middle text-secondary text-end">
+                    focus left/lower/upper/right window
+                    <a href="#anchor-window-focus" class="link-primary" aria-label="See related LazyVim command">See LazyVim</a>
+                  </td>
+                </tr>
+                <tr class="table-success">
+                  <td class="align-middle"><kbd class="text-nowrap">^w w</kbd></td>
+                  <td class="align-middle text-end">switch window</td>
+                </tr>
+                <tr class="table-success">
+                  <td class="align-middle text-secondary"><kbd class="bg-secondary text-nowrap">^w v</kbd> <kbd class="bg-secondary text-nowrap">^w s</kbd></td>
+                  <td class="align-middle text-secondary text-end">split vertically/horizontally</td>
+                </tr>
+                <tr class="table-success">
+                  <td class="align-middle text-secondary"><kbd class="bg-secondary text-nowrap">^w c</kbd></td>
+                  <td class="align-middle text-secondary text-end">close window (not close buffer)</td>
+                </tr>
+                <tr class="table-success">
+                  <td class="align-middle"><kbd class="text-nowrap">^w o</kbd></td>
+                  <td class="align-middle text-end">close other window</td>
+                </tr>
+                <tr class="table-success">
+                  <td class="align-middle text-secondary"><kbd class="bg-secondary text-nowrap">^w q</kbd></td>
+                  <td class="align-middle text-secondary text-end">quit window (close buffer)</td>
+                </tr>
+                <tr class="table-secondary">
+                  <td class="align-middle text-secondary">
+                    <kbd class="bg-secondary text-nowrap">:bnext</kbd> <br />
+                    <kbd class="bg-secondary text-nowrap">:bprev</kbd>
+                  </td>
+                  <td class="align-middle text-secondary text-end">
+                    next/prev buffer
+                    <a href="#anchor-switch-buffer" class="link-primary" aria-label="See related LazyVim command">See LazyVim</a>
+                  </td>
+                </tr>
+                <tr class="table-success">
+                  <td class="align-middle"><kbd class="text-nowrap">gt</kbd> <kbd class="text-nowrap">gT</kbd></td>
+                  <td class="align-middle text-end">next/prev tab</td>
+                </tr>
+                <tr class="table-light">
+                  <th colspan="2" class="py-2 text-danger-emphasis bg-transparent">Open &amp; Exit</th>
+                </tr>
+                <tr class="table-secondary">
+                  <td class="align-middle"><kbd class="text-nowrap">:e</kbd></td>
+                  <td class="align-middle text-end"><kbd class="text-nowrap">:edit</kbd> file (open)</td>
+                </tr>
+                <tr class="table-secondary">
+                  <td class="align-middle"><kbd class="text-nowrap">:w</kbd></td>
+                  <td class="align-middle text-end"><kbd class="text-nowrap">:write</kbd> file (save)</td>
+                </tr>
+                <tr class="table-secondary">
+                  <td class="align-middle"><kbd class="text-nowrap">:q</kbd></td>
+                  <td class="align-middle text-end"><kbd class="text-nowrap">:quit</kbd></td>
+                </tr>
+                <tr class="table-secondary">
+                  <td class="align-middle"><kbd class="text-nowrap">:q!</kbd></td>
+                  <td class="align-middle text-end">
+                    quit without saving<br />
+                    = <kbd class="text-nowrap">ZQ</kbd>
+                  </td>
+                </tr>
+                <tr class="table-secondary">
+                  <td class="align-middle"><kbd class="text-nowrap">:wq</kbd></td>
+                  <td class="align-middle text-end">write and quit</td>
+                </tr>
+                <tr class="table-secondary">
+                  <td class="align-middle"><kbd class="text-nowrap">:qa</kbd></td>
+                  <td class="align-middle text-end">
+                    = <kbd class="text-nowrap">:quitall</kbd>
+                    <a href="#anchor-lqq" class="link-primary" aria-label="See related LazyVim command">See LazyVim</a>
+                  </td>
+                </tr>
+                <tr class="table-secondary">
+                  <td class="align-middle text-secondary"><kbd class="bg-secondary text-nowrap">:x</kbd></td>
+                  <td class="align-middle text-secondary text-end">
+                    write (if changes) and quit <br />
+                    = <kbd class="bg-secondary text-nowrap">:exit</kbd> = <kbd class="bg-secondary text-nowrap">ZZ</kbd>
+                  </td>
+                </tr>
+                <tr class="table-secondary">
+                  <td class="align-middle text-secondary"><kbd class="bg-secondary text-nowrap">:e!</kbd></td>
+                  <td class="align-middle text-secondary text-end">revert changes</td>
+                </tr>
+                <tr class="table-light">
+                  <th colspan="2" class="py-2 text-danger-emphasis bg-transparent">Operator</th>
+                </tr>
+                <tr class="table-primary">
+                  <td class="align-middle table-primary" title="Operator"><kbd class="text-nowrap">d</kbd></td>
+                  <td class="align-middle text-end table-danger" title="Visual Mode">delete (cut)</td>
+                </tr>
+                <tr class="table-primary">
+                  <td class="align-middle table-primary" title="Operator"><kbd class="text-nowrap">y</kbd></td>
+                  <td class="align-middle text-end table-danger" title="Visual Mode">yank (copy)</td>
+                </tr>
+                <tr class="table-primary">
+                  <td class="align-middle table-primary" title="Operator"><kbd class="text-nowrap">c</kbd></td>
+                  <td class="align-middle text-end table-danger" title="Visual Mode">change (delete then insert)</td>
+                </tr>
+                <tr class="table-primary">
+                  <td class="align-middle text-secondary table-primary" title="Operator"><kbd class="bg-secondary text-nowrap">g~</kbd></td>
+                  <td class="align-middle text-secondary text-end table-danger" title="Visual Mode">toggle case</td>
+                </tr>
+                <tr class="table-primary">
+                  <td class="align-middle text-secondary table-primary" title="Operator"><kbd class="bg-secondary text-nowrap">gu</kbd> <kbd class="bg-secondary text-nowrap">gU</kbd></td>
+                  <td class="align-middle text-secondary text-end table-danger" title="Visual Mode">lowercase/uppercase</td>
+                </tr>
+                <tr class="table-primary">
+                  <td class="align-middle table-primary" title="Operator"><kbd class="text-nowrap">=</kbd></td>
+                  <td class="align-middle text-end table-danger" title="Visual Mode">auto-indent</td>
+                </tr>
+                <tr class="table-primary">
+                  <td class="align-middle table-primary" title="Operator"><kbd class="text-nowrap">&gt;</kbd> <kbd class="text-nowrap">&lt;</kbd></td>
+                  <td class="align-middle text-end table-danger" title="Visual Mode">shift right/left</td>
+                </tr>
+                <tr class="table-primary">
+                  <td class="align-middle text-secondary table-primary" title="Operator"><kbd class="bg-secondary text-nowrap">!</kbd></td>
+                  <td class="align-middle text-secondary text-end table-danger" title="Visual Mode">filter through external command</td>
+                </tr>
+                <tr class="table-primary">
+                  <td class="align-middle text-secondary table-primary" title="Operator"><kbd class="bg-secondary text-nowrap">gq</kbd></td>
+                  <td class="align-middle text-secondary text-end table-danger" title="Visual Mode">format text</td>
+                </tr>
+                <tr class="table-light">
+                  <th colspan="2" class="py-2 text-danger-emphasis bg-transparent">Diff</th>
+                </tr>
+                <tr class="table-success">
+                  <td class="align-middle"><kbd class="text-nowrap">]c</kbd> <kbd class="text-nowrap">[c</kbd></td>
+                  <td class="align-middle text-end">next/prev change</td>
+                </tr>
+                <tr class="table-success">
+                  <td class="align-middle"><kbd class="text-nowrap">do</kbd> <kbd class="text-nowrap">dp</kbd></td>
+                  <td class="align-middle text-end">diff obtain (get diff from other window)<br />diff put (put diff to other window)</td>
+                </tr>
+                <tr class="table-secondary">
+                  <td class="align-middle"><kbd class="text-nowrap">:diffupdate</kbd></td>
+                  <td class="align-middle text-end">update diff manually</td>
+                </tr>
+                <tr class="table-light">
+                  <th colspan="2" class="py-2 text-danger-emphasis bg-transparent">MISC</th>
+                </tr>
+                <tr class="table-success">
+                  <td class="align-middle"><kbd class="text-nowrap">u</kbd> <kbd class="text-nowrap">U</kbd></td>
+                  <td class="align-middle text-end">undo last change/line</td>
+                </tr>
+                <tr class="table-success">
+                  <td class="align-middle"><kbd class="text-nowrap">^r</kbd></td>
+                  <td class="align-middle text-end">redo</td>
+                </tr>
+                <tr class="table-success">
+                  <td class="align-middle"><kbd class="text-nowrap">.</kbd></td>
+                  <td class="align-middle text-end">repeat last command</td>
+                </tr>
+                <tr class="table-warning">
+                  <td class="align-middle"><kbd class="text-nowrap">^o{cmd}</kbd></td>
+                  <td class="align-middle text-end">enter normal mode for one cmd</td>
+                </tr>
+                <tr class="table-success">
+                  <td class="align-middle"><kbd class="text-nowrap">q:</kbd></td>
+                  <td class="align-middle text-end">
+                    open command-line window <br />
+                    <kbd class="text-nowrap">^c</kbd> to close
+                  </td>
+                </tr>
+                <tr class="table-success">
+                  <td class="align-middle"><kbd class="text-nowrap">zo</kbd> <kbd class="text-nowrap">zc</kbd></td>
+                  <td class="align-middle text-end">open/close fold</td>
+                </tr>
+                <tr class="table-secondary">
+                  <td class="align-middle"><kbd class="text-nowrap">:Ex</kbd></td>
+                  <td class="align-middle text-end">open netrw (explorer)</td>
+                </tr>
+                <tr class="table-secondary">
+                  <td class="align-middle"><kbd class="text-nowrap">:Vex</kbd></td>
+                  <td class="align-middle text-end">open netrw vertically</td>
+                </tr>
+                <tr class="table-secondary">
+                  <td class="align-middle"><kbd class="text-nowrap">:Ex!</kbd></td>
+                  <td class="align-middle text-end">open netrw and force to CWD</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
-      </div>
+      </section>
 
-      <div class="section">
-        <h2 class="title">LazyVim</h2>
-        <div class="table-container">
-          <table>
-            <tbody>
-              <tr class="separator desc">
-                <td colspan="2">
-                  <a href="https://www.lazyvim.org/keymaps#general">General</a>
-                </td>
-              </tr>
-              <tr class="type-normal" id="anchor-window-focus">
-                <td>
-                  <code>^h</code> <code>^j</code> <br />
-                  <code>^k</code> <code>^l</code>
-                </td>
-                <td>focus left/lower/upper/right window</td>
-              </tr>
-              <tr class="type-normal" id="anchor-window-focus">
-                <td>
-                  <code>^↑</code> <code>^↓</code> <br />
-                  <code>^→</code> <code>^←</code>
-                </td>
-                <td>increase/decrease window height/width</td>
-              </tr>
-              <tr class="type-normal" id="anchor-switch-buffer">
-                <td><code>H</code> <code>L</code></td>
-                <td>prev/next buffer</td>
-              </tr>
-              <tr class="type-normal">
-                <td><code>^/</code></td>
-                <td>toggle terminal</td>
-              </tr>
-              <tr class="type-normal">
-                <td><code>^s</code></td>
-                <td>save file</td>
-              </tr>
-              <tr class="type-normal">
-                <td><code>⎈wd</code></td>
-                <td>window delete</td>
-              </tr>
-              <tr class="type-normal" id="anchor-lqq">
-                <td><code>⎈qq</code></td>
-                <td>= <code>:qa</code></td>
-              </tr>
-
-              <tr class="separator desc">
-                <td colspan="2">
-                  <a href="https://github.com/nvim-treesitter/nvim-treesitter">nvim-treesitter</a>
-                </td>
-              </tr>
-              <tr class="type-normal">
-                <td><code>⌫</code> <code>^⎵</code></td>
-                <td>selection decrement/increment</td>
-              </tr>
-
-              <tr class="separator desc">
-                <td colspan="2">
-                  <a href="https://github.com/ibhagwan/fzf-lua">fzf-lua</a>
-                </td>
-              </tr>
-              <tr class="type-normal">
-                <td><code>⎈⎵</code></td>
-                <td>find files (root dir)</td>
-              </tr>
-              <tr class="type-normal">
-                <td><code>⎈fr</code></td>
-                <td>find recent files (global)</td>
-              </tr>
-              <tr class="type-visual">
-                <td><code>⎈sw</code> <code>⎈sW</code></td>
-                <td>search selection under root (cwd)</td>
-              </tr>
-
-              <tr class="separator desc">
-                <td colspan="2">
-                  <a href="https://github.com/folke/which-key.nvim">which-key.nvim</a>
-                </td>
-              </tr>
-              <tr class="type-normal">
-                <td><code>⎈?</code></td>
-                <td>buffer keymaps</td>
-              </tr>
-
-              <tr class="separator desc">
-                <td colspan="2">
-                  <a href="https://github.com/gbprod/yanky.nvim">yanky.nvim</a>
-                </td>
-              </tr>
-              <tr class="type-normal">
-                <td><code>⎈p</code></td>
-                <td>yank history</td>
-              </tr>
-
-              <tr class="separator desc">
-                <td colspan="2">
-                  <a href="https://github.com/folke/snacks.nvim">snacks.nvim</a>
-                </td>
-              </tr>
-              <tr class="type-normal">
-                <td><code>⎈n</code></td>
-                <td>notification history</td>
-              </tr>
-
-              <tr class="separator desc">
-                <td colspan="2">
-                  <a href="https://github.com/echasnovski/mini.surround">mini.surround</a>
-                </td>
-              </tr>
-              <tr class="type-normal">
-                <td><code>gsa</code> <code>gsd</code> <code>gsr</code></td>
-                <td>add/delete/replace surrounding</td>
-              </tr>
-
-              <tr class="separator desc">
-                <td colspan="2">
-                  <a href="https://github.com/folke/flash.nvim">flash.nvim</a>
-                </td>
-              </tr>
-              <tr class="type-normal">
-                <td><code>s</code> <code>S</code></td>
-                <td>seek/treeSitter</td>
-              </tr>
-
-              <tr class="separator desc">
-                <td colspan="2">
-                  <a href="">nvim-hlslens</a>
-                </td>
-              </tr>
-              <tr class="type-normal">
-                <td><code>*</code> <code>#</code></td>
-                <td>search (reverse) word under cursor</td>
-              </tr>
-            </tbody>
-          </table>
+      <section id="section-netrw" class="mb-5" aria-labelledby="heading-netrw">
+        <h2 id="heading-netrw" class="h3 text-primary text-center border-bottom pb-2 mb-3">Netrw</h2>
+        <div class="row g-3" data-command-columns>
+          <div class="col">
+            <table class="table table-sm border-light-subtle mb-0">
+              <caption class="visually-hidden">
+                Netrw commands
+              </caption>
+              <thead class="visually-hidden">
+                <tr>
+                  <th scope="col">Command</th>
+                  <th scope="col">Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="table-success">
+                  <td class="align-middle">
+                    <kbd class="text-nowrap">↩︎</kbd>
+                  </td>
+                  <td class="align-middle text-end">enter the directory or read the file</td>
+                </tr>
+                <tr class="table-success">
+                  <td class="align-middle">
+                    <kbd class="text-nowrap">D</kbd>
+                  </td>
+                  <td class="align-middle text-end">delete the file</td>
+                </tr>
+                <tr class="table-success">
+                  <td class="align-middle">
+                    <kbd class="text-nowrap">^l</kbd>
+                  </td>
+                  <td class="align-middle text-end">refresh</td>
+                </tr>
+                <tr class="table-success">
+                  <td class="align-middle">
+                    <kbd class="text-nowrap">d</kbd>
+                  </td>
+                  <td class="align-middle text-end">make directory</td>
+                </tr>
+                <tr class="table-success">
+                  <td class="align-middle">
+                    <kbd class="text-nowrap">i</kbd>
+                  </td>
+                  <td class="align-middle text-end">cycle thin, long, tree listings</td>
+                </tr>
+                <tr class="table-success">
+                  <td class="align-middle">
+                    <kbd class="text-nowrap">p</kbd>
+                  </td>
+                  <td class="align-middle text-end">preview</td>
+                </tr>
+                <tr class="table-success">
+                  <td class="align-middle">
+                    <kbd class="text-nowrap">^w z</kbd>
+                  </td>
+                  <td class="align-middle text-end">close preview</td>
+                </tr>
+                <tr class="table-success">
+                  <td class="align-middle">
+                    <kbd class="text-nowrap">r</kbd>
+                  </td>
+                  <td class="align-middle text-end">reverse sort order</td>
+                </tr>
+                <tr class="table-success">
+                  <td class="align-middle">
+                    <kbd class="text-nowrap">s</kbd>
+                  </td>
+                  <td class="align-middle text-end">cycle by name, time, size sorting</td>
+                </tr>
+                <tr class="table-success">
+                  <td class="align-middle">
+                    <kbd class="text-nowrap">t</kbd>
+                  </td>
+                  <td class="align-middle text-end">open in a new tab</td>
+                </tr>
+                <tr class="table-success">
+                  <td class="align-middle"><kbd class="text-nowrap">o</kbd> <kbd class="text-nowrap">v</kbd></td>
+                  <td class="align-middle text-end">open in a horizontal/vertical split</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
-      </div>
+      </section>
 
-      <div class="section">
-        <h2 class="title">Others</h2>
-        <div class="table-container">
-          <table>
-            <tbody>
-              <tr class="separator desc">
-                <td colspan="2">VscodeVim</td>
-              </tr>
-              <tr class="type-normal">
-                <td>
-                  <code>ys{motion}{desired}</code> <br />
-                  <code>ds{existing}</code> <br />
-                  <code>cs{existing}{desired}</code>
-                </td>
-                <td>surround</td>
-              </tr>
-              <tr class="type-visual">
-                <td>
-                  <code>S{desired}</code>
-                </td>
-                <td>surround</td>
-              </tr>
-
-              <tr class="separator">
-                <td colspan="2"></td>
-              </tr>
-              <tr class="type-normal">
-                <td>
-                  <code>⎈⎈s{char}</code> <br />
-                  <code>⎈⎈w</code> <br />
-                  <code>⎈⎈b</code> <code>⎈⎈e</code> <br />
-                  <code>⎈⎈j</code> <code>⎈⎈k</code> <br />
-                  <code>⎈⎈⎈j</code>
-                </td>
-                <td>easy motion</td>
-              </tr>
-
-              <tr class="separator">
-                <td colspan="2"></td>
-              </tr>
-              <tr class="type-normal unused">
-                <td>
-                  <code>s{char}{char}</code> <br />
-                  <code>S{char}{char}</code>
-                </td>
-                <td>sneak</td>
-              </tr>
-
-              <tr class="separator">
-                <td colspan="2"></td>
-              </tr>
-              <tr class="type-normal">
-                <td><code>ae</code> <code>ie</code></td>
-                <td>entire TO</td>
-              </tr>
-            </tbody>
-          </table>
+      <section id="section-lazyvim" class="mb-5" aria-labelledby="heading-lazyvim">
+        <h2 id="heading-lazyvim" class="h3 text-primary text-center border-bottom pb-2 mb-3">LazyVim</h2>
+        <div class="row g-3" data-command-columns>
+          <div class="col">
+            <table class="table table-sm border-light-subtle mb-0">
+              <caption class="visually-hidden">
+                LazyVim commands
+              </caption>
+              <thead class="visually-hidden">
+                <tr>
+                  <th scope="col">Command</th>
+                  <th scope="col">Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="table-light">
+                  <th colspan="2" class="py-2 text-danger-emphasis bg-transparent"><a href="https://www.lazyvim.org/keymaps#general">General</a></th>
+                </tr>
+                <tr class="table-success" id="anchor-window-focus">
+                  <td class="align-middle">
+                    <kbd class="text-nowrap">^h</kbd> <kbd class="text-nowrap">^j</kbd> <br />
+                    <kbd class="text-nowrap">^k</kbd> <kbd class="text-nowrap">^l</kbd>
+                  </td>
+                  <td class="align-middle text-end">focus left/lower/upper/right window</td>
+                </tr>
+                <tr class="table-success" id="anchor-window-resize">
+                  <td class="align-middle">
+                    <kbd class="text-nowrap">^↑</kbd> <kbd class="text-nowrap">^↓</kbd> <br />
+                    <kbd class="text-nowrap">^→</kbd> <kbd class="text-nowrap">^←</kbd>
+                  </td>
+                  <td class="align-middle text-end">increase/decrease window height/width</td>
+                </tr>
+                <tr class="table-success" id="anchor-switch-buffer">
+                  <td class="align-middle"><kbd class="text-nowrap">H</kbd> <kbd class="text-nowrap">L</kbd></td>
+                  <td class="align-middle text-end">prev/next buffer</td>
+                </tr>
+                <tr class="table-success">
+                  <td class="align-middle"><kbd class="text-nowrap">^/</kbd></td>
+                  <td class="align-middle text-end">toggle terminal</td>
+                </tr>
+                <tr class="table-success">
+                  <td class="align-middle"><kbd class="text-nowrap">^s</kbd></td>
+                  <td class="align-middle text-end">save file</td>
+                </tr>
+                <tr class="table-success">
+                  <td class="align-middle"><kbd class="text-nowrap">⎈wd</kbd></td>
+                  <td class="align-middle text-end">window delete</td>
+                </tr>
+                <tr class="table-success" id="anchor-lqq">
+                  <td class="align-middle"><kbd class="text-nowrap">⎈qq</kbd></td>
+                  <td class="align-middle text-end">= <kbd class="text-nowrap">:qa</kbd></td>
+                </tr>
+                <tr class="table-light">
+                  <th colspan="2" class="py-2 text-danger-emphasis bg-transparent"><a href="https://github.com/nvim-treesitter/nvim-treesitter">nvim-treesitter</a></th>
+                </tr>
+                <tr class="table-success">
+                  <td class="align-middle"><kbd class="text-nowrap">⌫</kbd> <kbd class="text-nowrap">^⎵</kbd></td>
+                  <td class="align-middle text-end">selection decrement/increment</td>
+                </tr>
+                <tr class="table-light">
+                  <th colspan="2" class="py-2 text-danger-emphasis bg-transparent"><a href="https://github.com/ibhagwan/fzf-lua">fzf-lua</a></th>
+                </tr>
+                <tr class="table-success">
+                  <td class="align-middle"><kbd class="text-nowrap">⎈⎵</kbd></td>
+                  <td class="align-middle text-end">find files (root dir)</td>
+                </tr>
+                <tr class="table-success">
+                  <td class="align-middle"><kbd class="text-nowrap">⎈fr</kbd></td>
+                  <td class="align-middle text-end">find recent files (global)</td>
+                </tr>
+                <tr class="table-danger">
+                  <td class="align-middle"><kbd class="text-nowrap">⎈sw</kbd> <kbd class="text-nowrap">⎈sW</kbd></td>
+                  <td class="align-middle text-end">search selection under root (cwd)</td>
+                </tr>
+                <tr class="table-light">
+                  <th colspan="2" class="py-2 text-danger-emphasis bg-transparent"><a href="https://github.com/folke/which-key.nvim">which-key.nvim</a></th>
+                </tr>
+                <tr class="table-success">
+                  <td class="align-middle"><kbd class="text-nowrap">⎈?</kbd></td>
+                  <td class="align-middle text-end">buffer keymaps</td>
+                </tr>
+                <tr class="table-light">
+                  <th colspan="2" class="py-2 text-danger-emphasis bg-transparent"><a href="https://github.com/gbprod/yanky.nvim">yanky.nvim</a></th>
+                </tr>
+                <tr class="table-success">
+                  <td class="align-middle"><kbd class="text-nowrap">⎈p</kbd></td>
+                  <td class="align-middle text-end">yank history</td>
+                </tr>
+                <tr class="table-light">
+                  <th colspan="2" class="py-2 text-danger-emphasis bg-transparent"><a href="https://github.com/folke/snacks.nvim">snacks.nvim</a></th>
+                </tr>
+                <tr class="table-success">
+                  <td class="align-middle"><kbd class="text-nowrap">⎈n</kbd></td>
+                  <td class="align-middle text-end">notification history</td>
+                </tr>
+                <tr class="table-light">
+                  <th colspan="2" class="py-2 text-danger-emphasis bg-transparent"><a href="https://github.com/echasnovski/mini.surround">mini.surround</a></th>
+                </tr>
+                <tr class="table-success">
+                  <td class="align-middle"><kbd class="text-nowrap">gsa</kbd> <kbd class="text-nowrap">gsd</kbd> <kbd class="text-nowrap">gsr</kbd></td>
+                  <td class="align-middle text-end">add/delete/replace surrounding</td>
+                </tr>
+                <tr class="table-light">
+                  <th colspan="2" class="py-2 text-danger-emphasis bg-transparent"><a href="https://github.com/folke/flash.nvim">flash.nvim</a></th>
+                </tr>
+                <tr class="table-success">
+                  <td class="align-middle"><kbd class="text-nowrap">s</kbd> <kbd class="text-nowrap">S</kbd></td>
+                  <td class="align-middle text-end">seek/treeSitter</td>
+                </tr>
+                <tr class="table-light">
+                  <th colspan="2" class="py-2 text-danger-emphasis bg-transparent"><a href="">nvim-hlslens</a></th>
+                </tr>
+                <tr class="table-success">
+                  <td class="align-middle"><kbd class="text-nowrap">*</kbd> <kbd class="text-nowrap">#</kbd></td>
+                  <td class="align-middle text-end">search (reverse) word under cursor</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
-      </div>
-    </div>
+      </section>
 
-    <div class="info-button" id="infoButton">
-      <i class="fas fa-info-circle"></i>
-      <div class="info-content">
-        <div class="info-header">Mode Colors</div>
-        <div class="info-item type-normal">Normal Mode</div>
-        <div class="info-item type-visual">Visual Mode</div>
-        <div class="info-item type-insert">Insert Mode</div>
-        <div class="info-item type-last">Command Mode</div>
-        <div class="info-item type-operator">Operator</div>
-      </div>
-    </div>
-
-    <script src="script.js"></script>
-    <script src="info-btn.js"></script>
+      <section id="section-others" class="mb-5" aria-labelledby="heading-others">
+        <h2 id="heading-others" class="h3 text-primary text-center border-bottom pb-2 mb-3">Others</h2>
+        <div class="row g-3" data-command-columns>
+          <div class="col">
+            <table class="table table-sm border-light-subtle mb-0">
+              <caption class="visually-hidden">
+                Others commands
+              </caption>
+              <thead class="visually-hidden">
+                <tr>
+                  <th scope="col">Command</th>
+                  <th scope="col">Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="table-light">
+                  <th colspan="2" class="py-2 text-danger-emphasis bg-transparent">VscodeVim</th>
+                </tr>
+                <tr class="table-success">
+                  <td class="align-middle">
+                    <kbd class="text-nowrap">ys{motion}{desired}</kbd> <br />
+                    <kbd class="text-nowrap">ds{existing}</kbd> <br />
+                    <kbd class="text-nowrap">cs{existing}{desired}</kbd>
+                  </td>
+                  <td class="align-middle text-end">surround</td>
+                </tr>
+                <tr class="table-danger">
+                  <td class="align-middle">
+                    <kbd class="text-nowrap">S{desired}</kbd>
+                  </td>
+                  <td class="align-middle text-end">surround</td>
+                </tr>
+                <tr class="table-success">
+                  <td class="align-middle">
+                    <kbd class="text-nowrap">⎈⎈s{char}</kbd> <br />
+                    <kbd class="text-nowrap">⎈⎈w</kbd> <br />
+                    <kbd class="text-nowrap">⎈⎈b</kbd> <kbd class="text-nowrap">⎈⎈e</kbd> <br />
+                    <kbd class="text-nowrap">⎈⎈j</kbd> <kbd class="text-nowrap">⎈⎈k</kbd> <br />
+                    <kbd class="text-nowrap">⎈⎈⎈j</kbd>
+                  </td>
+                  <td class="align-middle text-end">easy motion</td>
+                </tr>
+                <tr class="table-success">
+                  <td class="align-middle text-secondary">
+                    <kbd class="bg-secondary text-nowrap">s{char}{char}</kbd> <br />
+                    <kbd class="bg-secondary text-nowrap">S{char}{char}</kbd>
+                  </td>
+                  <td class="align-middle text-secondary text-end">sneak</td>
+                </tr>
+                <tr class="table-success">
+                  <td class="align-middle"><kbd class="text-nowrap">ae</kbd> <kbd class="text-nowrap">ie</kbd></td>
+                  <td class="align-middle text-end">entire TO</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+    </main>
+    <script src="script.js" defer></script>
   </body>
 </html>

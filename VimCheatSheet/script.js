@@ -1,134 +1,74 @@
-document.addEventListener("DOMContentLoaded", function () {
-  const rootStyle = getComputedStyle(document.documentElement);
-  const minTableWidth = parseFloat(rootStyle.getPropertyValue("--table-min-width"));
-  const gapWidth = parseFloat(rootStyle.getPropertyValue("--table-gap"));
+const commandSections = Array.from(document.querySelectorAll("[data-command-columns]"), (container) => {
+  const table = container.querySelector("table");
+  const rows = Array.from(table.tBodies[0].rows);
+  const units = [];
 
-  function calculateMaxTableCount(tableContainer) {
-    const containerWidth = tableContainer.clientWidth;
-    const maxTableCount = Math.floor(containerWidth / (minTableWidth + gapWidth));
-    console.log("\n------ Debug Info ------");
-    console.log("Container:", tableContainer);
-    console.log("containerWidth =", containerWidth);
-    console.log("minTableWidth =", minTableWidth);
-    console.log("gapWidth =", gapWidth);
-    console.log("maxTableCount =", maxTableCount > 0 ? maxTableCount : 1);
-
-    return maxTableCount > 0 ? maxTableCount : 1;
+  for (let index = 0; index < rows.length; index++) {
+    if (rows[index].classList.contains("table-light") && index + 1 < rows.length) {
+      units.push([rows[index], rows[++index]]);
+    } else {
+      units.push([rows[index]]);
+    }
   }
 
-  // Helper function to count br elements in a row
-  function countBrElements(row) {
-    const tds = row.querySelectorAll("td");
-    if (tds.length === 0) return 0;
+  return { container, table, units, width: 0 };
+});
 
-    const firstTdBrCount = tds[0].querySelectorAll("br").length;
-    const secondTdBrCount = tds.length > 1 ? tds[1].querySelectorAll("br").length : 0;
+function createColumn(source) {
+  const column = document.createElement("div");
+  column.className = "col";
+  const table = source.cloneNode(false);
+  table.append(source.caption.cloneNode(true), source.tHead.cloneNode(true));
+  const body = document.createElement("tbody");
+  table.append(body);
+  column.append(table);
+  return { column, body };
+}
 
-    return Math.max(firstTdBrCount, secondTdBrCount);
-  }
+function distributeCommands(section) {
+  const width = section.container.getBoundingClientRect().width;
+  if (width === section.width || width <= 0) return;
+  section.width = width;
 
-  // Helper function to calculate effective row count
-  function getVisualRowCount(row) {
-    const brCount = countBrElements(row);
-    return brCount + 1; // Add 1 because n br elements create n+1 visual rows
-  }
+  const count = Math.min(section.units.length, Math.max(1, Math.floor(width / 360)));
+  const columns = Array.from({ length: count }, () => createColumn(section.table));
+  section.container.replaceChildren(...columns.map(({ column }) => column));
+  columns[0].body.append(...section.units.flat());
 
-  function distributeRowsInContainer(tableContainer) {
-    const mainTable = tableContainer.querySelector("table");
-    const actualRows = Array.from(mainTable.querySelectorAll("tr"));
-    const stack = actualRows.reverse();
+  const heights = section.units.map((unit) => unit.reduce((height, row) => height + row.getBoundingClientRect().height, 0));
+  let remainingHeight = heights.reduce((total, height) => total + height, 0);
+  let next = 0;
 
-    // Calculate total effective rows
-    let visualRowCount = 0;
-    actualRows.forEach((row) => {
-      visualRowCount += getVisualRowCount(row);
-    });
+  for (let index = 0; index < count; index++) {
+    const columnsLeft = count - index;
+    const targetHeight = remainingHeight / columnsLeft;
+    let height = 0;
+    const first = next;
 
-    const maxTableCount = calculateMaxTableCount(tableContainer);
-    const visualRowCountAvg = Math.ceil(visualRowCount / maxTableCount);
-
-    console.log("\n------ Debug Info ------");
-    console.log("Container:", tableContainer);
-    console.log("Actual Rows =", actualRows.length);
-    console.log("Visual Rows =", visualRowCount);
-    console.log("Average Visual Rows Per Table =", visualRowCountAvg);
-
-    mainTable.remove();
-
-    function distributeRows() {
-      const tables = [];
-
-      for (let i = 0; i < maxTableCount; i++) {
-        const newTable = document.createElement("table");
-        newTable.style.width = "100%";
-        tables.push(newTable);
-        tableContainer.appendChild(newTable);
+    while (next < section.units.length) {
+      const unitsLeft = section.units.length - next;
+      if (next > first && unitsLeft <= columnsLeft - 1) break;
+      if (next > first && columnsLeft > 1 && Math.abs(height - targetHeight) <= Math.abs(height + heights[next] - targetHeight)) {
+        break;
       }
-
-      for (let i = 0; i < maxTableCount; i++) {
-        const newTable = tables[i];
-        const isLastTable = i === maxTableCount - 1;
-        let visualRowCountCur = 0;
-        let actualRowCountCur = 0;
-
-        while (stack.length > 0) {
-          let row = stack.pop();
-          newTable.appendChild(row);
-          visualRowCountCur += getVisualRowCount(row);
-          actualRowCountCur++;
-
-          if (!isLastTable && visualRowCountCur >= visualRowCountAvg) {
-            console.log(newTable, "is assigned", visualRowCountCur, "visual rows,", actualRowCountCur, "actual rows");
-            break;
-          }
-
-          if (stack.length === 0) {
-            console.log(newTable, "is assigned", visualRowCountCur, "visual rows,", actualRowCountCur, "actual rows");
-          }
-        }
-
-        // Handle separators
-        let firstRow = newTable.rows[0];
-        if (firstRow && firstRow.classList.contains("separator") && !firstRow.classList.contains("desc")) {
-          newTable.deleteRow(0);
-          visualRowCountCur--;
-          actualRowCountCur--;
-        }
-
-        let lastRowIndex = newTable.rows.length - 1;
-        let lastRow = newTable.rows[lastRowIndex];
-        if (lastRow && lastRow.classList.contains("separator")) {
-          if (lastRow.classList.contains("desc")) {
-            newTable.deleteRow(lastRowIndex);
-            stack.push(lastRow);
-          } else {
-            newTable.deleteRow(lastRowIndex);
-          }
-
-          visualRowCountCur--;
-          actualRowCountCur--;
-        }
-      }
+      height += heights[next];
+      next++;
     }
 
-    distributeRows();
-
-    // Reattach anchor link event listeners
-    const anchorLinks = tableContainer.querySelectorAll('a[href^="#"]');
-    anchorLinks.forEach(function (link) {
-      link.addEventListener("click", function (e) {
-        const targetId = this.getAttribute("href").substring(1);
-        const targetElement = document.getElementById(targetId);
-
-        if (targetElement) {
-          targetElement.classList.remove("highlight");
-          void targetElement.offsetWidth;
-          targetElement.classList.add("highlight");
-        }
-      });
-    });
+    columns[index].body.append(...section.units.slice(first, next).flat());
+    remainingHeight -= height;
   }
+}
 
-  const tableContainers = document.querySelectorAll(".table-container");
-  tableContainers.forEach(distributeRowsInContainer);
+function refreshColumns() {
+  commandSections.forEach(distributeCommands);
+}
+
+let pendingFrame;
+const observer = new ResizeObserver(() => {
+  cancelAnimationFrame(pendingFrame);
+  pendingFrame = requestAnimationFrame(refreshColumns);
 });
+
+commandSections.forEach(({ container }) => observer.observe(container));
+refreshColumns();
